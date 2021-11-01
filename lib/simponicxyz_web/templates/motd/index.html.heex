@@ -1,0 +1,26 @@
+<h1>Listing Motds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for motd <- @motds do %>
+    <tr>
+      <td><%= motd.message %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.motd_path(@conn, :show, motd) %></span>
+        <span><%= link "Edit", to: Routes.motd_path(@conn, :edit, motd) %></span>
+        <span><%= link "Delete", to: Routes.motd_path(@conn, :delete, motd), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Motd", to: Routes.motd_path(@conn, :new) %></span>

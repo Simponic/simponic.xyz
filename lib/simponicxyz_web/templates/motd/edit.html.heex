@@ -1,0 +1,5 @@
+<h1>Edit Motd</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.motd_path(@conn, :update, @motd)) %>
+
+<span><%= link "Back", to: Routes.motd_path(@conn, :index) %></span>

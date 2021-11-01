@@ -1,0 +1,19 @@
+.logo {
+  font-size: 3em;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-left {
+  flex-grow: 1;
+}
+
+.header-right {
+  flex-grow: 1;
+  text-align: right;
+  align-self: center;
+}

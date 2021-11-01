@@ -1,0 +1,60 @@
+@import "./header.css";
+@import "./alert.css";
+@import "./forms.css";
+
+:root {
+  --main-bg-color: #684028;
+  --submit-button-background: #bdbcbb;
+  --checkbox-selected-background: #575554;
+
+  --main-text-color: #F5F3F4; 
+  --secondary-text-color: #D3A075;
+
+  --info-alert-color: #4fe05b;
+  --error-alert-color: #e0524f;
+}
+
+@font-face {
+  font-family: Nunito;
+  src: url(../fonts/NunitoSans-Light.ttf);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: var(--secondary-text-color);
+}
+
+h1,h2,h3 {
+  color: var(--secondary-text-color);
+}
+
+body {
+  color: var(--main-text-color);
+  background: var(--main-bg-color);
+  font-family: Nunito;
+
+  padding: 5px;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 1000px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.container {
+  padding: 8px;
+}

@@ -1,0 +1,13 @@
+<h1>Show Motd</h1>
+
+<ul>
+
+  <li>
+    <strong>Message:</strong>
+    <%= @motd.message %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.motd_path(@conn, :edit, @motd) %></span> |
+<span><%= link "Back", to: Routes.motd_path(@conn, :index) %></span>
