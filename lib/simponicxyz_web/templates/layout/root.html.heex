@@ -14,7 +14,7 @@
       <div class="header">
         <div class="header-left">
           <%= link "(simp)le c(onic)s", to: Routes.page_path(@conn, :index), class: "logo" %>
-          <p style="font-style:italic" id="motd"><%= Simponicxyz.Motds.random().message %></p>
+          <p style="font-style:italic" id="motd"><%= random_motd() %></p>
         </div>
         <div class="header-right">
           <%= if @current_user do %>

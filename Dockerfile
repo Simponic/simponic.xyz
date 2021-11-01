@@ -3,7 +3,7 @@ ARG MIX_ENV="prod"
 FROM hexpm/elixir:1.12.2-erlang-23.1.2-alpine-3.12.1 as build
 
 # install build dependencies
-RUN apk add --no-cache build-base git python3 curl
+RUN apk add --no-cache build-base git python3 curl npm nodejs
 
 # prepare build dir
 WORKDIR /app
@@ -34,6 +34,7 @@ COPY priv priv
 # your Elixir templates, you will need to move the asset compilation
 # step down so that `lib` is available.
 COPY assets assets
+RUN npm install --prefix assets
 RUN mix assets.deploy
 
 # compile and build the release
@@ -72,13 +73,10 @@ USER "${USER}"
 
 COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/simponicxyz ./
 
-ENTRYPOINT ["bin/simponicxyz"]
-
 # Usage:
 #  * build: sudo docker image build -t elixir/my_app .
 #  * shell: sudo docker container run --rm -it --entrypoint "" -p 127.0.0.1:4000:4000 elixir/my_app sh
 #  * run:   sudo docker container run --rm -it -p 127.0.0.1:4000:4000 --name my_app elixir/my_app
 #  * exec:  sudo docker container exec -it my_app sh
 #  * logs:  sudo docker container logs --follow --tail 100 my_app
-CMD ["eval 'Simponicxyz.Release.migrate'"]
-CMD ["start"]
+CMD bin/simponicxyz eval 'Simponicxyz.Release.migrate' && bin/simponicxyz start

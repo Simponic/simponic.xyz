@@ -10,7 +10,8 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :simponicxyz, SimponicxyzWeb.Endpoint,
-  url: [host: "127.0.0.1", port: 80],
+  server: true,
+  url: [scheme: "https", host: "simponic.xyz", port: 443, path: "/"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production

@@ -1,7 +1,6 @@
 defmodule Simponicxyz.Motds.Motd do
   use Ecto.Schema
   import Ecto.Changeset
-  import Ecto.Query
 
   @derive {Jason.Encoder, only: [:message]}
 
