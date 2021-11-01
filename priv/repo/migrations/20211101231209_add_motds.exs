@@ -4,7 +4,6 @@ defmodule Simponicxyz.Repo.Migrations.AddMotds do
   import Ecto.Query
 
   alias Simponicxyz.Repo
-  alias Simponicxyz.Motds
   alias Simponicxyz.Motds.Motd
 
   def up do
