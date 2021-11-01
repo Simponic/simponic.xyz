@@ -101,4 +101,9 @@ defmodule Simponicxyz.Motds do
   def change_motd(%Motd{} = motd, attrs \\ %{}) do
     Motd.changeset(motd, attrs)
   end
+
+  def random() do
+    (from x in Motd, order_by: fragment("RANDOM()"), limit: 1)
+    |> Repo.one()
+  end
 end

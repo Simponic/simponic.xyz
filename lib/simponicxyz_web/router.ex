@@ -21,7 +21,11 @@ defmodule SimponicxyzWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/motds", MotdController
+
+    resources "/motds", MotdController, only: [:show]
+
+    pipe_through :require_admin_user
+    resources "/motds", MotdController, except: [:show]
   end
 
   # Other scopes may use custom stacks.

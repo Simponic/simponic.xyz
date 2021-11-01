@@ -6,7 +6,6 @@ import "../css/app.css"
 // to get started and then uncomment the line below.
 // import "./user_socket.js"
 
-import "./motd"
 import $ from "jquery-min"
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
