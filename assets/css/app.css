@@ -46,6 +46,14 @@ body {
   padding: 5px;
 }
 
+p,ul {
+  font-size: 16px;
+}
+
+p,h1,h2,h3,h4,ul {
+  margin-top: 10px;
+}
+
 .content {
   margin-left: auto;
   margin-right: auto;
@@ -56,5 +64,28 @@ body {
 }
 
 .container {
-  padding: 8px;
+  padding: 5px 8px 20px 20px;
+
+  line-height: 1.7em;
+}
+
+.banner {
+  width: 100%;
+}
+
+.body-image {
+  width: 50%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media screen and (max-width: 480px) {
+  .body-logo {
+    width: 100%;
+  }
+  .container {
+    padding: 5px;
+  }
 }
