@@ -9,7 +9,7 @@ networks:
 
 services:
   prod:
-    image: "simponicxyz/simponicxyz"
+    image: "simponic/simponicxyz"
     ports:
       - "8080:8080"
     env_file:
