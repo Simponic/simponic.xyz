@@ -1,14 +1,22 @@
 <h1>Contact</h1>
-
+<%= if Enum.reduce(["name", "email", "message"], fn x,_ -> !is_nil(@form[x]) end) do %>
+  <%= link "Clear", to: Routes.contact_path(@conn, :delete_form_session) %>
+<% end %>
 <%= form_for @conn, Routes.contact_path(@conn, :send), fn f-> %>
   <%= label f, :name %>
-  <%= text_input f, :name, required: true, class: "input-text" %>
+  <%= text_input f, :name, required: true, class: "input-text", value: @form["name"] %>
 
   <%= label f, :email %>
-  <%= email_input f, :email, required: true, class: "input-text" %>
+  <%= email_input f, :email, required: true, class: "input-text", value: @form["email"] %>
 
   <%= label f, :message %>
-  <%= textarea f, :message, required: true, rows: 7, cols: 40, class: "input-text" %>
+  <%= textarea f, :message, required: true, rows: 7, cols: 40, class: "input-text", value: @form["message"] %>
+
+  <%= label f, :captcha %>
+  <br>
+  <%= img_tag(@image, class: "image") %>
+  <br>
+  <%= text_input f, :captcha, required: true, class: "input-text" %>
 
   <%= submit "Send", class: "submit-button" %>
 <% end %>

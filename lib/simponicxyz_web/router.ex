@@ -23,6 +23,7 @@ defmodule SimponicxyzWeb.Router do
     get "/", PageController, :index
 
     get "/contact", ContactController, :index
+    get "/contact/clear", ContactController, :delete_form_session
     post "/contact", ContactController, :send
 
     resources "/motds", MotdController, only: [:show]
