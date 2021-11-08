@@ -22,8 +22,10 @@ defmodule SimponicxyzWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/motds", MotdController, only: [:show]
+    get "/contact", ContactController, :index
+    post "/contact", ContactController, :send
 
+    resources "/motds", MotdController, only: [:show]
     pipe_through :require_admin_user
     resources "/motds", MotdController, except: [:show]
   end

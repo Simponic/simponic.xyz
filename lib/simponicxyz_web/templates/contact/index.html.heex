@@ -1,0 +1,14 @@
+<h1>Contact</h1>
+
+<%= form_for @conn, Routes.contact_path(@conn, :send), fn f-> %>
+  <%= label f, :name %>
+  <%= text_input f, :name, required: true, class: "input-text" %>
+
+  <%= label f, :email %>
+  <%= email_input f, :email, required: true, class: "input-text" %>
+
+  <%= label f, :message %>
+  <%= textarea f, :message, required: true, rows: 7, cols: 40, class: "input-text" %>
+
+  <%= submit "Send", class: "submit-button" %>
+<% end %>
