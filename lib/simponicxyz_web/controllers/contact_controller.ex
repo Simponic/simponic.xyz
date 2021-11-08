@@ -10,7 +10,9 @@ defmodule SimponicxyzWeb.ContactController do
         |> put_session(:captcha_text, text)
         |> render("index.html", image: "data:image/gif;base64," <> Base.encode64(img_binary), form: get_session(conn, :previous))
       {:timeout} ->
-        true
+        conn
+        |> put_flash(:error, "Error generating captcha")
+        |> redirect(to: Routes.page_path(conn, :index))
     end
   end
 
