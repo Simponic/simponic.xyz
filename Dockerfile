@@ -41,7 +41,6 @@ RUN mix assets.deploy
 COPY lib lib
 RUN mix compile
 # changes to config/runtime.exs don't require recompiling the code
-COPY deps deps
 COPY config/runtime.exs config/
 # uncomment COPY if rel/ exists
 # COPY rel rel
