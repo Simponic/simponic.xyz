@@ -4,20 +4,32 @@ defmodule SimponicxyzWeb.ContactController do
   alias Simponicxyz.Mailer
 
   def index(conn, _params) do
-    case Captcha.get() do
-      {:ok, text, img_binary} ->
-        conn
-        |> put_session(:captcha_text, text)
-        |> render("index.html", image: "data:image/gif;base64," <> Base.encode64(img_binary), form: get_session(conn, :previous))
-      {:timeout} ->
-        conn
-        |> put_flash(:error, "Error generating captcha")
-        |> redirect(to: Routes.page_path(conn, :index))
+    conn
+    |> render("index.html", form: get_session(conn, :previous))
+  end
+
+  def validate_captcha(h_response) do
+    url = to_charlist("https://hcaptcha.com/siteverify")
+    type = 'application/x-www-form-urlencoded' 
+    secret = System.get_env("HCAPTCHA_SECRET")
+    body = to_charlist("response=" <> h_response <> "&secret=" <> secret)
+    case :httpc.request(:post, {url, [], type, body}, [], []) do
+      {:ok, {{'HTTP/1.1', 200, 'OK'}, _headers, body}} -> 
+        case Jason.decode(body) do
+          {:ok, body} ->
+            if (body["success"]) do
+              true
+            else
+              nil
+            end
+        end
+      _ ->
+        nil
     end
   end
 
   def send(conn, params) do
-    if params["captcha"] == get_session(conn, :captcha_text) do
+    if validate_captcha(params["h-captcha-response"]) do
       mail = new()
         |> from(System.get_env("CONTACT_EMAIL") || "sender@example.com")
         |> to(System.get_env("TO_EMAIL") || "receiver@example.com")

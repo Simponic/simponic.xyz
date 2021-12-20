@@ -54,6 +54,10 @@ p,h1,h2,h3,h4,ul {
   margin-top: 10px;
 }
 
+ul {
+  margin-left: 16px;
+}
+
 .content {
   margin-left: auto;
   margin-right: auto;

@@ -20,7 +20,7 @@ defmodule Simponicxyz.MixProject do
   def application do
     [
       mod: {Simponicxyz.Application, []},
-      extra_applications: [:logger, :runtime_tools],
+      extra_applications: [:logger, :runtime_tools, :ssl, :inets],
     ]
   end
 
@@ -46,7 +46,6 @@ defmodule Simponicxyz.MixProject do
       {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:gen_smtp, "~> 1.0"},
-      {:captcha, "~> 0.1.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},

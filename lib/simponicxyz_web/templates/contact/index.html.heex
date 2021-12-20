@@ -1,4 +1,5 @@
 <h1>Contact</h1>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <%= if Enum.reduce(["name", "email", "message"], fn x,_ -> !is_nil(@form[x]) end) do %>
   <%= link "Clear", to: Routes.contact_path(@conn, :delete_form_session) %>
 <% end %>
@@ -12,11 +13,7 @@
   <%= label f, :message %>
   <%= textarea f, :message, required: true, rows: 7, cols: 40, class: "input-text", value: @form["message"] %>
 
-  <%= label f, :captcha %>
-  <br>
-  <%= img_tag(@image, class: "image") %>
-  <br>
-  <%= text_input f, :captcha, required: true, class: "input-text" %>
+  <div class="h-captcha" data-sitekey="ed5a88a5-417b-42c7-ab02-d5fd5b95b955"></div>
 
   <%= submit "Send", class: "submit-button" %>
 <% end %>
