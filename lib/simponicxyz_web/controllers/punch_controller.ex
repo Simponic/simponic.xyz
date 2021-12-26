@@ -56,11 +56,6 @@ defmodule SimponicxyzWeb.PunchController do
     end
   end
 
-  def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone} = params) do
-    Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
-    |> Enum.map(fn x -> Punches.bound_times(x, start, end_t) end)
-  end
-
   def delete(conn, %{"id" => id}) do
     punch = Punches.get_punch!(id)
     {:ok, _punch} = Punches.delete_punch(punch)
@@ -95,6 +90,9 @@ defmodule SimponicxyzWeb.PunchController do
   end
 
   def export(conn, %{"start" => start, "end" => end_t} = params) do
+    Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
+    |> Enum.map(fn x -> Punches.bound_times(x, start, end_t) end)
+
     send_download(
       conn,
       {:binary, '{x: 2}'},

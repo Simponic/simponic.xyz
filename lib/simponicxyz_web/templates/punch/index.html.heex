@@ -14,7 +14,7 @@
 
 <div>
   <h3>Export Timecard:</h3>
-  <.form let={f} for={@conn} action={Routes.punch_path(@conn, :export)} onsubmit="updateTimes('start_picker', 'end_picker')">
+  <.form for={@conn} action={Routes.punch_path(@conn, :export)} onsubmit="updateTimes('start_picker', 'end_picker')">
 
   <div style="display: inline-block">
     <label for="start_picker">Start Date:</label>
