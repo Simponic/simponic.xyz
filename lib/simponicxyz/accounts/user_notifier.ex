@@ -8,7 +8,7 @@ defmodule Simponicxyz.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"MyApp", "contact@example.com"})
+      |> from({"Simponic", System.get_env("CONTACT_EMAIL") || "test@example.com"})
       |> subject(subject)
       |> text_body(body)
 
