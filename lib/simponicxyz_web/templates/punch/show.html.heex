@@ -1,0 +1,23 @@
+<h1>Show Punch</h1>
+
+<ul>
+
+  <li>
+    <strong>Start:</strong>
+    <%= @punch.start %>
+  </li>
+
+  <li>
+    <strong>End:</strong>
+    <%= @punch.end %>
+  </li>
+
+  <li>
+    <strong>User:</strong>
+    <%= @punch.user_id %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.punch_path(@conn, :edit, @punch) %></span> |
+<span><%= link "Back", to: Routes.punch_path(@conn, :index) %></span>

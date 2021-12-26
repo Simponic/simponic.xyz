@@ -1,0 +1,14 @@
+.table {
+  width: 100%;
+  overflow-x: scroll; 
+}
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.table tr:hover {
+  background-color: var(--secondary-bg-color)
+}
+.table tr:nth-child(even) {
+  background-color: var(--secondary-bg-color);
+}

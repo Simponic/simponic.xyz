@@ -141,11 +141,11 @@ defmodule SimponicxyzWeb.UserAuth do
 
   def require_admin_user(conn, _opts) do
     user = conn.assigns[:current_user]
-    if !!user and SimponicxyzWeb.UserRoleHelper.is_admin?(user) do
+    if !is_nil(user) and SimponicxyzWeb.AuthorizeHelper.is_admin?(user) do
       conn
     else
       conn
-      |> put_flash(:error, "You must be an admin to access this page.")
+      |> put_flash(:error, "You must be an administrator to access this page.")
       |> maybe_store_return_to()
       |> redirect(to: Routes.user_session_path(conn, :new))
       |> halt()

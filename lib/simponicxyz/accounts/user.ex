@@ -9,6 +9,8 @@ defmodule Simponicxyz.Accounts.User do
     field :confirmed_at, :naive_datetime
     field :role, :string, default: "user"
 
+    has_many :punches, Simponicxyz.Punches.Punch
+
     timestamps()
   end
 

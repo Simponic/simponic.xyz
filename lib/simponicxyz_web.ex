@@ -89,7 +89,7 @@ defmodule SimponicxyzWeb do
 
       import SimponicxyzWeb.ErrorHelpers
       import SimponicxyzWeb.Gettext
-      import SimponicxyzWeb.UserRoleHelper
+      import SimponicxyzWeb.AuthorizeHelper
       import SimponicxyzWeb.MotdHelper
       alias SimponicxyzWeb.Router.Helpers, as: Routes
     end

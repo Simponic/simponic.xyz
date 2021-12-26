@@ -5,4 +5,9 @@ defmodule SimponicxyzWeb.PageController do
     conn
     |> render("index.html")
   end
+
+  def works(conn, _params) do
+    conn
+    |> render("works.html")
+  end
 end

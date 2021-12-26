@@ -20,7 +20,7 @@ defmodule Simponicxyz.MixProject do
   def application do
     [
       mod: {Simponicxyz.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ssl, :inets],
+      extra_applications: [:logger, :runtime_tools, :ssl, :inets, :plug],
     ]
   end
 
@@ -48,9 +48,12 @@ defmodule Simponicxyz.MixProject do
       {:gen_smtp, "~> 1.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
+      {:hackney, "~> 1.18"},
+      {:timex, "~> 3.7"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:navigation_history, "~> 0.4.0"}
     ]
   end
 

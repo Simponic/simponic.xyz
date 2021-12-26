@@ -1,0 +1,19 @@
+.my-button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.green {
+  border: 2px solid var(--info-alert-color);
+  color: var(--info-alert-color);
+}
+
+.red {
+  border: 2px solid var(--error-alert-color);
+  color: var(--error-alert-color);
+}

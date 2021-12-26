@@ -10,8 +10,6 @@ import Config
 config :simponicxyz,
   ecto_repos: [Simponicxyz.Repo]
 
-
-
 # Configures the endpoint
 config :simponicxyz, SimponicxyzWeb.Endpoint,
   url: [host: "localhost"],

@@ -1,0 +1,78 @@
+<h1>Timecard Tracker</h1>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<div style="margin-top: 12px; margin-bottom: 12px">
+  <h3>Manage Current Punch:</h3>
+  <%= link "Start New Punch", to: Routes.punch_path(@conn, :start_new), class: "my-button green" %>
+  <%= if Enum.count(@currently_running) == 1 do %>
+    <%= link "End Current Punch", to: Routes.punch_path(@conn, :end_timer, List.first(@currently_running)), class: "my-button red" %>
+  <% end %>
+</div>
+
+<div>
+  <h3>Export Timecard:</h3>
+  <.form let={f} for={@conn} action={Routes.punch_path(@conn, :export)} onsubmit="updateTimes('start_picker', 'end_picker')">
+
+  <div style="display: inline-block">
+    <label for="start_picker">Start Date:</label>
+    <input type="text" id="start_picker" name="start" class="input-text">
+  </div>
+
+  <div style="display: inline-block">
+    <label for="start_picker">End Date:</label>
+    <input type="text" id="end_picker" name="end" class="input-text">
+  </div>
+
+  <div>
+    <%= submit "Submit", class: "submit-button" %>
+  </div>
+  </.form>
+</div>
+
+<div>
+  <h3>Timecard Punches: </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for punch <- @punches do %>
+      <tr>
+        <td class="date"><%= punch.start %></td>
+        <td class="date"><%= punch.end %></td>
+        <td>
+          <%= if is_nil(punch.end) do %>
+            <span><%= link "End", to: Routes.punch_path(@conn, :end_timer, punch) %></span>
+          <% end %>
+          <span><%= link "Edit", to: Routes.punch_path(@conn, :edit, punch) %></span>
+          <span><%= link "Delete", to: Routes.punch_path(@conn, :delete, punch), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+
+  <span><%= link "New Manual Punch", to: Routes.punch_path(@conn, :new) %></span>
+  <span><%= link "Delete All", to: Routes.punch_path(@conn, :delete_all) %></span>
+</div>
+
+<script>
+["#start_picker", "#end_picker"].map((x) => flatpickr(x, flatpickrOptions));
+
+let date_elements = $(".date");
+for (let x of date_elements) {
+  let t = new Date(x.innerHTML);
+  if (validDate(t)) {
+    x.innerHTML = t.toLocaleString();
+  } else {
+    x.innerHTML = "-";
+  }
+}
+</script>

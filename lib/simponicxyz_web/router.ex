@@ -11,6 +11,7 @@ defmodule SimponicxyzWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+    plug NavigationHistory.Tracker, excluded_paths: ["/login", ~r(/admin.*)]
   end
 
   pipeline :api do
@@ -19,8 +20,20 @@ defmodule SimponicxyzWeb.Router do
 
   scope "/", SimponicxyzWeb do
     pipe_through :browser
+    pipe_through :require_authenticated_user
+
+    get "/punches/end-timer/:id", PunchController, :end_timer
+    get "/punches/start-new", PunchController, :start_new
+    get "/punches/delete-all", PunchController, :delete_all
+    post "/punches/export", PunchController, :export
+    resources "/punches", PunchController
+  end
+
+  scope "/", SimponicxyzWeb do
+    pipe_through :browser
 
     get "/", PageController, :index
+    get "/projects", PageController, :works
 
     get "/contact", ContactController, :index
     get "/contact/clear", ContactController, :delete_form_session

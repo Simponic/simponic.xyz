@@ -1,9 +1,12 @@
 @import "./header.css";
 @import "./alert.css";
 @import "./forms.css";
+@import "./buttons.css";
+@import "./tables.css";
 
 :root {
   --main-bg-color: #684028;
+  --secondary-bg-color: #834f2e;
   --submit-button-background: #bdbcbb;
   --checkbox-selected-background: #575554;
 

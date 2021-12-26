@@ -1,16 +1,17 @@
 .alert {
+  cursor: pointer;
   border-radius: 5px;
   padding: 5px;
 }
 
 .alert-info {
   color: var(--info-alert-color);
-  border: var(--info-alert-color) 1px solid;
+  border: var(--info-alert-color) 2px solid;
 }
 
 .alert-error {
   margin-top: 5px;
   color: var(--error-alert-color);
-  border: var(--error-alert-color) 1px solid;
+  border: var(--error-alert-color) 2px solid;
 }
 

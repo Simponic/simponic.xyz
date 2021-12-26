@@ -6,7 +6,7 @@ import "../css/app.css"
 // to get started and then uncomment the line below.
 // import "./user_socket.js"
 
-import $ from "jquery-min"
+import $ from "jquery"
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
@@ -33,3 +33,11 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 window.$ = $
+
+import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
+window.validDate = validDate;
+window.flatpickrOptions = flatpickrOptions;
+window.updateTimes = submitTimes;
+
+import flatpickr from "flatpickr"
+window.flatpickr = flatpickr

@@ -1,0 +1,5 @@
+<h1>Edit Punch</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.punch_path(@conn, :update, @punch)) %>
+
+<span><%= link "Back", to: Routes.punch_path(@conn, :index) %></span>
