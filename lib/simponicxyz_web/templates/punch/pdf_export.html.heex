@@ -1,0 +1,36 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<table>
+  <tr>
+    <thead>
+      <th>Date</th>
+      <th>Hours</th>
+    </thead>
+  </tr>
+  <%= for interval <- @intervals do %>
+    <tr>
+      <td><%= Timex.format!(Timex.Timezone.convert(interval.from, @timezone), "{YYYY}-{0M}-{D}") %></td>
+      <td><%= Map.get(@total_time_per_interval, interval) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><strong>Total Time</strong></td>
+    <td><%= @total_time %></td>
+  </tr>
+</table>

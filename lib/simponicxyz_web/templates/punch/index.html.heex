@@ -14,21 +14,21 @@
 
 <div>
   <h3>Export Timecard:</h3>
-  <.form for={@conn} action={Routes.punch_path(@conn, :export)} onsubmit="updateTimes('start_picker', 'end_picker')">
+  <.form for={@conn} action={Routes.punch_path(@conn, :export)} onsubmit="updateTimes(['start_picker', 'end_picker'])">
+    <input type="hidden" name="timezone" id="timezone">
+    <div style="display: inline-block">
+      <label for="start_picker">Start Date: (inclusive)</label>
+      <input type="text" id="start_picker" name="start" class="input-text">
+    </div>
 
-  <div style="display: inline-block">
-    <label for="start_picker">Start Date:</label>
-    <input type="text" id="start_picker" name="start" class="input-text">
-  </div>
+    <div style="display: inline-block">
+      <label for="start_picker">End Date: (non-inclusive)</label>
+      <input type="text" id="end_picker" name="end" class="input-text">
+    </div>
 
-  <div style="display: inline-block">
-    <label for="start_picker">End Date:</label>
-    <input type="text" id="end_picker" name="end" class="input-text">
-  </div>
-
-  <div>
-    <%= submit "Submit", class: "submit-button" %>
-  </div>
+    <div>
+      <%= submit "Submit", class: "submit-button" %>
+    </div>
   </.form>
 </div>
 
@@ -64,7 +64,17 @@
 </div>
 
 <script>
+let flatpickrOptions = {
+  altInput: true,
+  altFormat: "F j, Y",
+  enableTime: false,
+  dateFormat: "Y-m-d H:i",
+  time_24hr: true
+};
+
 ["#start_picker", "#end_picker"].map((x) => flatpickr(x, flatpickrOptions));
+
+$("#timezone").val(Intl.DateTimeFormat().resolvedOptions().timeZone);
 
 let date_elements = $(".date");
 for (let x of date_elements) {

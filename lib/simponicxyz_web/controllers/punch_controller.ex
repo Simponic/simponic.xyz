@@ -89,15 +89,51 @@ defmodule SimponicxyzWeb.PunchController do
     create(conn, %{"punch" => %{"start" => DateTime.utc_now()}})
   end
 
-  def export(conn, %{"start" => start, "end" => end_t} = params) do
-    Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
-    |> Enum.map(fn x -> Punches.bound_times(x, start, end_t) end)
+  defp intersection(i1, i2) do
+    # Calculate the intersection between two Timex.Interval in microseconds
+    cond do
+      i2.from > i1.until -> 
+        0
+      i1.from > i2.until ->
+        0
+      true -> 
+        abs(Timex.diff(min(i1.until, i2.until), max(i1.from, i2.from)))
+    end
+  end
+
+  defp construct_intervals(start, end_t, m \\ []) do
+    current_start = Timex.shift(end_t, days: -1)
+    if (current_start >= start) do
+      construct_intervals(start, current_start, [Timex.Interval.new(from: max(current_start, start), until: end_t) | m])
+    else
+      m
+    end
+  end
+
+  def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone} = _params) do
+    total_time = %{}
+    intervals = construct_intervals(Timex.parse!(start, "{ISO:Extended:Z}"), Timex.parse!(end_t, "{ISO:Extended:Z}"))
+    punches = Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
+    |> Enum.map(fn punch -> 
+        punch_interval = Timex.Interval.new(from: punch.start, until: punch.end)
+        # Get the amount of time this punch intersects with the current interval
+        Enum.map(intervals, fn interval -> 
+          Float.round(intersection(interval, punch_interval) / (:math.pow(10, 6) * 60 * 60), 2)
+        end)
+      end)
+    total_time_per_interval = Enum.reduce(punches, %{}, fn x,a -> 
+      # Get the total amount of microseconds for punches between each interval
+      Map.merge(a, Enum.zip(intervals, x) |> Enum.into(%{}), fn _k,l,m -> l+m end)
+    end)
+
+    total_time = Enum.reduce(intervals, 0, fn x,a -> a + Map.get(total_time_per_interval, x) end)
+    pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
     send_download(
       conn,
-      {:binary, '{x: 2}'},
-      content_type: "application/json",
-      filename: "download.csv"
+      {:binary, pdf_html},
+      content_type: "application/pdf",
+      filename: "download.pdf"
     )
   end
 end
