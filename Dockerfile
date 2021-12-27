@@ -49,7 +49,9 @@ RUN mix release
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
 FROM alpine:3.12.1 AS simponicxyz
-RUN apk add --no-cache libstdc++ openssl ncurses-libs wkhtmltopdf
+RUN apk add --no-cache libstdc++ openssl ncurses-libs nodejs npm
+
+RUN npm -g install chrome-headless-render-pdf puppeteer
 
 ARG MIX_ENV
 ENV USER="elixir"
