@@ -49,7 +49,7 @@ RUN mix release
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
 FROM alpine:3.12.1 AS simponicxyz
-RUN apk add --no-cache libstdc++ openssl ncurses-libs wkhtmltopdf xvfb-run
+RUN apk add --no-cache libstdc++ openssl ncurses-libs wkhtmltopdf xvfb-run ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family
 
 ARG MIX_ENV
 ENV USER="elixir"
