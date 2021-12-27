@@ -17,12 +17,6 @@ config :simponicxyz, SimponicxyzWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :pdf_generator,
-  use_chrome: true,                           # <-- make sure you installed node/puppeteer
-  prefer_system_executable: true,             # <-- set this if you installed the NPM dependencies globally
-  raise_on_missing_wkhtmltopdf_binary: false # <-- so the app won't complain about a missing wkhtmltopdf
-
-
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
