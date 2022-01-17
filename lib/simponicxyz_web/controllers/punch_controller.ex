@@ -111,7 +111,6 @@ defmodule SimponicxyzWeb.PunchController do
   end
 
   def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone} = _params) do
-    total_time = %{}
     intervals = construct_intervals(Timex.parse!(start, "{ISO:Extended:Z}"), Timex.parse!(end_t, "{ISO:Extended:Z}"))
     punches = Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
     |> Enum.map(fn punch -> 
@@ -126,7 +125,10 @@ defmodule SimponicxyzWeb.PunchController do
       Map.merge(a, Enum.zip(intervals, x) |> Enum.into(%{}), fn _k,l,m -> l+m end)
     end)
 
-    total_time = Enum.reduce(intervals, 0, fn x,a -> a + Map.get(total_time_per_interval, x) end)
+    total_time = 0
+    if (Enum.reduce(intervals, false, fn x,a -> if Map.get(total_time_per_interval, x), do: true, else: a end)) do
+      total_time = Enum.reduce(intervals, 0, fn x,a -> a + Map.get(total_time_per_interval, x) end)
+    end
     pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
     send_download(
