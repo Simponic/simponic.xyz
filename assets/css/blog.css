@@ -1,0 +1,15 @@
+.post {
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid black;
+  background-color: var(--secondary-bg-color); 
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.comment {
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid black;
+  background-color: var(--secondary-bg-color); 
+}

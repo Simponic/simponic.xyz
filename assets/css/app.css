@@ -3,10 +3,11 @@
 @import "./forms.css";
 @import "./buttons.css";
 @import "./tables.css";
+@import "./blog.css";
 
 :root {
   --main-bg-color: #684028;
-  --secondary-bg-color: #834f2e;
+  --secondary-bg-color: #311e13;
   --submit-button-background: #bdbcbb;
   --checkbox-selected-background: #575554;
 

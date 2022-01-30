@@ -1,12 +1,8 @@
-// We import the CSS which is extracted to its own file by esbuild.
-// Remove this line if you add a your own CSS build pipeline (e.g postcss).
 import "../css/app.css"
 
-// If you want to use Phoenix channels, run `mix help phx.gen.channel`
-// to get started and then uncomment the line below.
-// import "./user_socket.js"
-
 import $ from "jquery"
+import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
+import DOMPurify from "dompurify"
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
@@ -34,10 +30,11 @@ window.liveSocket = liveSocket
 
 window.$ = $
 
-import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
 window.validDate = validDate;
 window.flatpickrOptions = flatpickrOptions;
 window.updateTimes = submitTimes;
 
 import flatpickr from "flatpickr"
 window.flatpickr = flatpickr
+
+window.DOMPurify = DOMPurify
