@@ -111,8 +111,9 @@ defmodule SimponicxyzWeb.PunchController do
   end
 
   def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone} = _params) do
-    intervals = construct_intervals(Timex.parse!(start, "{ISO:Extended:Z}"), Timex.parse!(end_t, "{ISO:Extended:Z}"))
-    punches = Punches.in_date_range_by_user(conn.assigns[:current_user].id, start, end_t)
+    interval = %{:start => Timex.parse!(start, "{ISO:Extended:Z}"), :end_t => Timex.parse!(end_t, "{ISO:Extended:Z}")} 
+    intervals = construct_intervals(interval.start, interval.end_t)
+    punches = Punches.in_date_range_by_user(conn.assigns[:current_user].id, interval)
     |> Enum.map(fn punch -> 
         punch_interval = Timex.Interval.new(from: punch.start, until: punch.end)
         # Get the amount of time this punch intersects with the current interval
@@ -125,10 +126,7 @@ defmodule SimponicxyzWeb.PunchController do
       Map.merge(a, Enum.zip(intervals, x) |> Enum.into(%{}), fn _k,l,m -> l+m end)
     end)
 
-    total_time = 0
-    if (Enum.reduce(intervals, false, fn x,a -> if Map.get(total_time_per_interval, x), do: true, else: a end)) do
-      total_time = Enum.reduce(intervals, 0, fn x,a -> a + Map.get(total_time_per_interval, x) end)
-    end
+    total_time = Enum.reduce_while(intervals, 0, fn x,a -> if Map.get(total_time_per_interval, x), do: {:cont, a+x}, else: {:halt, a} end)
     pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
     send_download(

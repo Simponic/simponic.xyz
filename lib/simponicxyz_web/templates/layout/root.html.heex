@@ -19,6 +19,7 @@
         <div class="header-right">
           <div>
             <%= link "Contact", to: Routes.contact_path(@conn, :index) %>
+            <%= link "Blog", to: Routes.post_path(@conn, :index) %>
           </div>
           <%= if @current_user do %>
             <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>

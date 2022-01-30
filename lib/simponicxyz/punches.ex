@@ -111,12 +111,7 @@ defmodule Simponicxyz.Punches do
     Punch.changeset(punch, attrs)
   end
 
-  def format_dates(%Punch{} = punch) do
-    [start, end_t] = Enum.map([:start, :end], fn x -> if !is_nil(Map.get(punch, x)), do: NaiveDateTime.to_string(Map.get(punch, x)) end)
-    Map.merge(punch, %{:start => start, :end => end_t})
-  end
-
-  def in_date_range_by_user(user_id, start, end_t) do
+  def in_date_range_by_user(user_id, %{:start => start, :end_t => end_t}) do
     Repo.all(from x in Punch, where: x.user_id == ^user_id and x.start <= ^end_t and x.end >= ^start, select: x)
   end
 

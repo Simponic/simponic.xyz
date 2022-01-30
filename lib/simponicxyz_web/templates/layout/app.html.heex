@@ -1,12 +1,12 @@
 <main class="container">
-  <%= if get_flash(@conn, :info) do %>
+  <%= if x=get_flash(@conn, :info) do %>
     <div class="alert alert-info">
-      <%= get_flash(@conn, :info) %>
+      <%= x %>
     </div>
   <% end %>
-  <%= if get_flash(@conn, :error) do %>
+  <%= if x=get_flash(@conn, :error) do %>
     <div class="alert alert-error">
-      <%= get_flash(@conn, :error) %>
+      <%= x %>
     </div>
   <% end %>
   <%= @inner_content %>

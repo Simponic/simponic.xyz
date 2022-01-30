@@ -20,17 +20,6 @@ defmodule SimponicxyzWeb.Router do
 
   scope "/", SimponicxyzWeb do
     pipe_through :browser
-    pipe_through :require_authenticated_user
-
-    get "/punches/end-timer/:id", PunchController, :end_timer
-    get "/punches/start-new", PunchController, :start_new
-    get "/punches/delete-all", PunchController, :delete_all
-    post "/punches/export", PunchController, :export
-    resources "/punches", PunchController
-  end
-
-  scope "/", SimponicxyzWeb do
-    pipe_through :browser
 
     get "/", PageController, :index
     get "/projects", PageController, :works
@@ -39,9 +28,28 @@ defmodule SimponicxyzWeb.Router do
     get "/contact/clear", ContactController, :delete_form_session
     post "/contact", ContactController, :send
 
-    resources "/motds", MotdController, only: [:show]
-    pipe_through :require_admin_user
-    resources "/motds", MotdController, except: [:show]
+    resources "/motds", MotdController, only: [:index, :show]
+    resources "/comments", CommentController, only: [:index, :show]
+    resources "/blogs", PostController, only: [:index, :show]
+  end
+
+  scope "/", SimponicxyzWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/punches/end-timer/:id", PunchController, :end_timer
+    get "/punches/start-new", PunchController, :start_new
+    get "/punches/delete-all", PunchController, :delete_all
+    post "/punches/export", PunchController, :export
+
+    resources "/punches", PunchController 
+    resources "/comments", CommentController, except: [:index, :show]
+  end
+
+  scope "/admin", SimponicxyzWeb do
+    pipe_through [:browser, :require_admin_user]
+
+    resources "/motds", MotdController, except: [:index, :show]
+    resources "/blogs", PostController, except: [:index, :show]
   end
 
   # Other scopes may use custom stacks.

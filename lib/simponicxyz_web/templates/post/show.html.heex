@@ -1,0 +1,24 @@
+<div>
+<h1><%= @post.title %></h1>
+<h3 style="font-style: italic"><%= @post.subtitle %></h3>
+<p>Created: <%= Calendar.strftime(@post.inserted_at, "%Y/%m/%d %I:%M:%S %p") %>
+   | Updated: <%= Calendar.strftime(@post.updated_at, "%Y/%m/%d %I:%M:%S %p") %></p>
+</div>
+
+<br>
+
+<div class="comment">
+  <%= raw @post.content %>
+</div>
+
+<br>
+<!--
+TODO: Add comments
+TODO: Re-read code
+-->
+<div>
+<%= if !is_nil(@current_user) && @current_user.role == "admin" do %>
+<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
+<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+<% end %>
+</div>
