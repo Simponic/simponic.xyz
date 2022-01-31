@@ -5,15 +5,18 @@
     </div>
   <% end %>
 
-  <%= label f, :user_id %>
-  <%= number_input f, :user_id %>
-  <%= error_tag f, :user_id %>
+  <%= hidden_input f, :user_id %>
+  <%= hidden_input f, :post_id %>
 
-  <%= label f, :body %>
-  <%= text_input f, :body %>
-  <%= error_tag f, :body %>
+  <div class="comment">
+    <%= label f, :body %>
+    <br>
+    <%= textarea f, :body, rows: 5, cols: 30 %>
+    <%= error_tag f, :body %>
 
-  <div>
-    <%= submit "Save" %>
+    <div>
+      <%= submit "Save", class: "submit-button" %>
+    </div>
   </div>
+
 </.form>

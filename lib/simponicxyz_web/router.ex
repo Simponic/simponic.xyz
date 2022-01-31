@@ -29,7 +29,6 @@ defmodule SimponicxyzWeb.Router do
     post "/contact", ContactController, :send
 
     resources "/motds", MotdController, only: [:index, :show]
-    resources "/comments", CommentController, only: [:index, :show]
     resources "/blogs", PostController, only: [:index, :show]
   end
 
@@ -42,7 +41,7 @@ defmodule SimponicxyzWeb.Router do
     post "/punches/export", PunchController, :export
 
     resources "/punches", PunchController 
-    resources "/comments", CommentController, except: [:index, :show]
+    resources "/comments", CommentController, except: [:index, :edit]
   end
 
   scope "/admin", SimponicxyzWeb do
@@ -50,6 +49,7 @@ defmodule SimponicxyzWeb.Router do
 
     resources "/motds", MotdController, except: [:index, :show]
     resources "/blogs", PostController, except: [:index, :show]
+    resources "/comments", CommentController, only: [:index, :edit]
   end
 
   # Other scopes may use custom stacks.

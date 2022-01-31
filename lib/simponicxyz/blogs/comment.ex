@@ -14,8 +14,8 @@ defmodule Simponicxyz.Blogs.Comment do
   @doc false
   def changeset(comment, attrs) do
     comment
-    |> cast(attrs, [:body])
-    |> validate_required([:body])
+    |> cast(attrs, [:post_id, :user_id, :body])
+    |> validate_required([:post_id, :user_id, :body])
     |> validate_length(:body, min: 1, max: 500)
   end
 end

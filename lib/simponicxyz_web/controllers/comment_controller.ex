@@ -4,6 +4,10 @@ defmodule SimponicxyzWeb.CommentController do
   alias Simponicxyz.Blogs
   alias Simponicxyz.Blogs.Comment
 
+  alias SimponicxyzWeb.AuthorizeHelper
+
+  plug AuthorizeHelper, %{resource: Comment} when action in [:delete, :edit, :update] 
+
   def index(conn, _params) do
     comments = Blogs.list_comments()
     render(conn, "index.html", comments: comments)
@@ -14,16 +18,27 @@ defmodule SimponicxyzWeb.CommentController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"comment" => comment_params}) do
-    case Blogs.create_comment(comment_params) do
-      {:ok, comment} ->
-        conn
-        |> put_flash(:info, "Comment created successfully.")
-        |> redirect(to: Routes.comment_path(conn, :show, comment))
+  defp authorize(conn, comment_params) do
+    user = conn.assigns[:current_user]
+    !is_nil(user) && (String.to_integer(comment_params["user_id"]) == user.id || user.role == "admin")
+  end
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+  def create(conn, %{"comment" => comment_params}) do
+    if authorize(conn, comment_params) do
+      case Blogs.create_comment(comment_params) do
+        {:ok, comment} ->
+          conn
+          |> put_flash(:info, "Comment created successfully.")
+          |> redirect(to: NavigationHistory.last_path(conn))
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "new.html", changeset: changeset)
+      end
     end
+    
+    conn
+    |> put_flash(:error, "Nice try")
+    |> redirect(to: NavigationHistory.last_path(conn))
   end
 
   def show(conn, %{"id" => id}) do
@@ -40,15 +55,21 @@ defmodule SimponicxyzWeb.CommentController do
   def update(conn, %{"id" => id, "comment" => comment_params}) do
     comment = Blogs.get_comment!(id)
 
-    case Blogs.update_comment(comment, comment_params) do
-      {:ok, comment} ->
-        conn
-        |> put_flash(:info, "Comment updated successfully.")
-        |> redirect(to: Routes.comment_path(conn, :show, comment))
+    if authorize(conn, comment_params) do
+      case Blogs.update_comment(comment, comment_params) do
+        {:ok, comment} ->
+          conn
+          |> put_flash(:info, "Comment updated successfully.")
+          |> redirect(to: Routes.comment_path(conn, :show, comment))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", comment: comment, changeset: changeset)
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "edit.html", comment: comment, changeset: changeset)
+      end
     end
+
+    conn
+    |> put_flash(:error, "Nice try")
+    |> redirect(to: NavigationHistory.last_path(conn))
   end
 
   def delete(conn, %{"id" => id}) do
@@ -57,6 +78,6 @@ defmodule SimponicxyzWeb.CommentController do
 
     conn
     |> put_flash(:info, "Comment deleted successfully.")
-    |> redirect(to: Routes.comment_path(conn, :index))
+    |> redirect(to: NavigationHistory.last_path(conn))
   end
 end

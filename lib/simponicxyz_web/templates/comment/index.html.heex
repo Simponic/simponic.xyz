@@ -1,11 +1,11 @@
 <h1>Listing Comments</h1>
 
-<table>
+<table style="width:100%">
   <thead>
     <tr>
       <th>User</th>
       <th>Body</th>
-
+      <th>Post</th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +14,7 @@
     <tr>
       <td><%= comment.user_id %></td>
       <td><%= comment.body %></td>
+      <td><%= link "View Post", to: Routes.post_path(@conn, :show, comment.post_id) %></td>
 
       <td>
         <span><%= link "Show", to: Routes.comment_path(@conn, :show, comment) %></span>

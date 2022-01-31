@@ -4,7 +4,7 @@ defmodule SimponicxyzWeb.UserSessionController do
   alias Simponicxyz.Accounts
   alias SimponicxyzWeb.UserAuth
 
-  def new(conn, _params) do
+  def new(conn, params) do
     render(conn, "new.html", error_message: nil)
   end
 

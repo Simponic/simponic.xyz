@@ -1,24 +1,53 @@
 <div>
 <h1><%= @post.title %></h1>
 <h3 style="font-style: italic"><%= @post.subtitle %></h3>
-<p>Created: <%= Calendar.strftime(@post.inserted_at, "%Y/%m/%d %I:%M:%S %p") %>
-   | Updated: <%= Calendar.strftime(@post.updated_at, "%Y/%m/%d %I:%M:%S %p") %></p>
+<p>Created: <%= Timex.from_now(@post.inserted_at) %>
+   | Updated: <%= Timex.from_now(@post.updated_at) %></p>
 </div>
 
 <br>
 
-<div class="comment">
+<div class="post">
   <%= raw @post.content %>
 </div>
 
 <br>
-<!--
-TODO: Add comments
-TODO: Re-read code
--->
-<div>
-<%= if !is_nil(@current_user) && @current_user.role == "admin" do %>
-<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
-<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+<h2>Comments</h2>
+<%= for comment <- @post.comments do %>
+  <div class="comment">
+    <p><%= comment.body %></p>
+
+    <%=updated = Timex.from_now(comment.updated_at) 
+       inserted = Timex.from_now(comment.inserted_at)
+       "" %>
+    <p>Created: <%= inserted %>
+       <%= if (updated !== inserted), do: "| Updated: " <> Timex.from_now(comment.updated_at), else: "" %></p>
+
+    <div>
+      <%= if !is_nil(@current_user) && (comment.user_id == @current_user.id || @current_user.role == "admin") do %>
+        <%= link "Edit",to: Routes.comment_path(@conn, :edit, comment) %>
+        | <%= link "Delete",to: Routes.comment_path(@conn, :delete, comment), method: :delete, data: [confirm: "Are you sure?"] %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+
+<%= if !is_nil(@current_user) do %>
+  <%= render SimponicxyzWeb.CommentView, "form.html", 
+                                conn: @conn, 
+                                action: Routes.comment_path(@conn, :create),
+                                changeset: @comment_changeset %>
+<% else %>
+  <div>
+    <p><%= link "Login", to: Routes.user_session_path(@conn, :new) %> to comment.</p>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= if is_admin?(@current_user) do %>
+    <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
+    <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+  <% end %>
 </div>
