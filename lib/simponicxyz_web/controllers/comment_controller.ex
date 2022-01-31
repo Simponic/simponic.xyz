@@ -26,7 +26,7 @@ defmodule SimponicxyzWeb.CommentController do
   def create(conn, %{"comment" => comment_params}) do
     if authorize(conn, comment_params) do
       case Blogs.create_comment(comment_params) do
-        {:ok, comment} ->
+        {:ok, _comment} ->
           conn
           |> put_flash(:info, "Comment created successfully.")
           |> redirect(to: NavigationHistory.last_path(conn))

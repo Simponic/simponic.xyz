@@ -81,7 +81,7 @@ defmodule SimponicxyzWeb.UserAuth do
     conn
     |> renew_session()
     |> delete_resp_cookie(@remember_me_cookie)
-    |> redirect(to: NavigationHistory.past_path(conn))
+    |> redirect(to: NavigationHistory.last_path(conn))
   end
 
   @doc """
