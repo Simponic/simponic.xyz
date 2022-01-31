@@ -5,6 +5,7 @@ defmodule Simponicxyz.Punches.Punch do
   schema "punches" do
     field :end, :utc_datetime
     field :start, :utc_datetime
+    field :task, :string
     belongs_to :user, Simponicxyz.Accounts.User
 
     timestamps()
@@ -13,6 +14,6 @@ defmodule Simponicxyz.Punches.Punch do
   @doc false
   def changeset(punch, attrs) do
     punch
-    |> cast(attrs, [:start, :end])
+    |> cast(attrs, [:task, :start, :end])
   end
 end

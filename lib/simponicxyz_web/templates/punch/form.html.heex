@@ -10,14 +10,20 @@
 
   <div style="display: inline-block">
     <%= label f, :start %>
-    <input id="start_picker" name="punch[start]" type="text" class="input-text">
+    <%= text_input f, :start, id: "start_picker", class: "input-text" %>
     <%= error_tag f, :start %>
   </div>
 
   <div style="display: inline-block">
     <%= label f, :end %>
-    <input id="end_picker" name="punch[end]" type="text" class="input-text">
+    <%= text_input f, :end, id: "end_picker", class: "input-text" %>
     <%= error_tag f, :end %>
+  </div>
+
+  <div>
+    <%= label f, :task %>
+    <%= text_input f, :task, class: "input-text" %>
+    <%= error_tag f, :task %>
   </div>
 
   <div>

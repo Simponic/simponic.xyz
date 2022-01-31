@@ -111,8 +111,8 @@ defmodule Simponicxyz.Punches do
     Punch.changeset(punch, attrs)
   end
 
-  def in_date_range_by_user(user_id, %{:start => start, :end_t => end_t}) do
-    Repo.all(from x in Punch, where: x.user_id == ^user_id and x.start <= ^end_t and x.end >= ^start, select: x)
+  def in_date_range_by_user_where_task(user_id, %{:start => start, :end_t => end_t}, task) do
+    Repo.all(from x in Punch, where: x.user_id == ^user_id and x.task == ^task and x.start <= ^end_t and x.end >= ^start, select: x)
   end
 
   def bound_times(%Punch{} = punch, start, end_t) do
@@ -121,5 +121,12 @@ defmodule Simponicxyz.Punches do
         :start => (if punch.start < start, do: start, else: punch.start),
         :end => (if punch.end > end_t, do: end_t, else: punch.end)
       })
+  end
+
+  def get_task_names() do
+    Repo.all(from punch in Simponicxyz.Punches.Punch,
+                where: not is_nil(punch.task),
+                distinct: punch.task,
+                select: punch.task)
   end
 end

@@ -10,7 +10,8 @@ defmodule SimponicxyzWeb.PunchController do
   def index(conn, _params) do
     punches = Punches.filter_punches_by_user_id(conn.assigns[:current_user].id)
     currently_running = Enum.filter(punches, fn x -> is_nil(x.end) end)
-    render(conn, "index.html", punches: punches, currently_running: currently_running)
+    IO.puts(inspect(Punches.get_task_names()))
+    render(conn, "index.html", punches: punches, currently_running: currently_running, task_names: Punches.get_task_names())
   end
 
   def new(conn, _params) do
@@ -85,8 +86,8 @@ defmodule SimponicxyzWeb.PunchController do
     |> halt()
   end
 
-  def start_new(conn, _params) do
-    create(conn, %{"punch" => %{"start" => DateTime.utc_now()}})
+  def start_new(conn, params) do
+    create(conn, %{"punch" => %{"start" => DateTime.utc_now(), "task" => params["task"]}})
   end
 
   defp intersection(i1, i2) do
@@ -110,10 +111,10 @@ defmodule SimponicxyzWeb.PunchController do
     end
   end
 
-  def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone} = _params) do
+  def export(conn, %{"start" => start, "end" => end_t, "timezone" => timezone, "task" => task} = _params) do
     interval = %{:start => Timex.parse!(start, "{ISO:Extended:Z}"), :end_t => Timex.parse!(end_t, "{ISO:Extended:Z}")} 
     intervals = construct_intervals(interval.start, interval.end_t)
-    punches = Punches.in_date_range_by_user(conn.assigns[:current_user].id, interval)
+    punches = Punches.in_date_range_by_user_where_task(conn.assigns[:current_user].id, interval, task)
     |> Enum.map(fn punch -> 
         punch_interval = Timex.Interval.new(from: punch.start, until: punch.end)
         # Get the amount of time this punch intersects with the current interval

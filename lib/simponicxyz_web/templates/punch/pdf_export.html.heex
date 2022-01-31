@@ -26,7 +26,7 @@ tr:nth-child(even) {
   </tr>
   <%= for interval <- @intervals do %>
     <tr>
-      <td><%= Timex.format!(Timex.Timezone.convert(interval.from, @timezone), "{YYYY}-{0M}-{D}") %></td>
+      <td><%= Timex.format!(Timex.Timezone.convert(interval.from, @timezone), "{YYYY}-{0M}-{0D}") %></td>
       <td><%= Map.get(@total_time_per_interval, interval) %></td>
     </tr>
   <% end %>

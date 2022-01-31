@@ -36,7 +36,7 @@ defmodule SimponicxyzWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/punches/end-timer/:id", PunchController, :end_timer
-    get "/punches/start-new", PunchController, :start_new
+    post "/punches/start-new", PunchController, :start_new
     get "/punches/delete-all", PunchController, :delete_all
     post "/punches/export", PunchController, :export
 

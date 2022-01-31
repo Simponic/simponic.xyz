@@ -6,11 +6,32 @@
 
 <div style="margin-top: 12px; margin-bottom: 12px">
   <h3>Manage Current Punch:</h3>
-  <%= link "Start New Punch", to: Routes.punch_path(@conn, :start_new), class: "my-button green" %>
+</div>
+
+
+<div style="margin-bottom: 12px">
+  <a href="javascript:void(0)" class="my-button green" id="punch-in">Punch In</a>
   <%= if Enum.count(@currently_running) == 1 do %>
     <%= link "End Current Punch", to: Routes.punch_path(@conn, :end_timer, List.first(@currently_running)), class: "my-button red" %>
   <% end %>
 </div>
+
+<div>
+  <label>Task Name</label>
+  <input type="text" id="task-name" placeholder="Task Name" class="input-text" value="My Task"/>
+
+  <%= if Enum.count(@currently_running) == 0 do %>
+    <select id="punch-task" style="display: inline-block;">
+      <option value="" id="null-option"> - </option>
+      <%= for task_name <- @task_names do %>
+        <option phx-value-ref={task_name} > <%= task_name %> </option>
+      <% end %>
+    </select>
+    <p id="punch-error" style="color: red; display: none">Please enter task name</p>
+  <% end %>
+</div>
+
+  
 
 <div>
   <h3>Export Timecard:</h3>
@@ -26,6 +47,11 @@
       <input type="text" id="end_picker" name="end" class="input-text">
     </div>
 
+    <div style="display: inline-block">
+      <label for="task">Task</label>
+      <input type="text" id="t" name="task" class="input-text">
+    </div>
+
     <div>
       <%= submit "Submit", class: "submit-button" %>
     </div>
@@ -39,6 +65,7 @@
       <tr>
         <th>Start Time</th>
         <th>End Time</th>
+        <th>Task</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -47,6 +74,7 @@
       <tr>
         <td class="date"><%= punch.start %></td>
         <td class="date"><%= punch.end %></td>
+        <td><%= punch.task %></td>
         <td>
           <%= if is_nil(punch.end) do %>
             <span><%= link "End", to: Routes.punch_path(@conn, :end_timer, punch) %></span>
@@ -75,6 +103,30 @@ let flatpickrOptions = {
 ["#start_picker", "#end_picker"].map((x) => flatpickr(x, flatpickrOptions));
 
 $("#timezone").val(Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+$("#punch-task").on("change", function() {
+  $("#task-name").val($(this).val());
+  $("#punch-error").hide();
+});
+
+$("#task-name").on("change", function() {
+  $("#null-option").val($(this).val());
+  $("#punch-error").hide();
+});
+
+$("#punch-in").on("click", function() {
+  if ($("#task-name").val() == "") {
+    $("#punch-error").show();
+    return;
+  }
+  $.post("<%= Routes.punch_path(@conn, :start_new) %>", {
+      _csrf_token: "<%= Phoenix.Controller.get_csrf_token() %>",
+      task: $("#task-name").val(),
+    }, function(data) {
+      location.reload();
+    }
+  );
+});
 
 let date_elements = $(".date");
 for (let x of date_elements) {
