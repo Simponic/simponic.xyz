@@ -103,8 +103,8 @@ defmodule SimponicxyzWeb.PunchController do
 
   defp construct_intervals(start, end_t, m \\ []) do
     current_start = Timex.shift(end_t, days: -1)
-    if (current_start >= start) do
-      construct_intervals(start, current_start, [Timex.Interval.new(from: max(current_start, start), until: end_t) | m])
+    if Enum.member?([:gt, :eq], DateTime.compare(current_start, start)) do
+      construct_intervals(start, current_start, [Timex.Interval.new(from: current_start, until: end_t) | m])
     else
       m
     end
@@ -126,14 +126,15 @@ defmodule SimponicxyzWeb.PunchController do
       Map.merge(a, Enum.zip(intervals, x) |> Enum.into(%{}), fn _k,l,m -> l+m end)
     end)
 
-    total_time = Enum.reduce_while(intervals, 0, fn x,a -> if Map.get(total_time_per_interval, x), do: {:cont, a+x}, else: {:halt, a} end)
+    total_time = Enum.reduce_while(intervals, 0, fn x,a -> if y=Map.get(total_time_per_interval, x), do: {:cont, a+y}, else: {:halt, a} end)
     pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
     send_download(
       conn,
       {:binary, pdf_html},
       content_type: "application/pdf",
-      filename: "download.pdf"
+      filename: Calendar.strftime(interval.start, "%m/%d/%Y") <> "-" <> Calendar.strftime(interval.end_t, "%m/%d/%Y") <> ".pdf"
     )
+#    render(conn, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time)
   end
 end
