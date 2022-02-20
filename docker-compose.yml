@@ -1,12 +1,10 @@
 version: '3'
-
 networks:
   static:
     ipam:
       driver: default
       config:
       - subnet: 172.22.0.0/16
-
 services:
   prod:
     image: "simponic/simponicxyz"
@@ -28,6 +26,5 @@ services:
       - .env
     volumes:
       - pgdata:/var/lib/postgresql/data
-
 volumes:
   pgdata:
