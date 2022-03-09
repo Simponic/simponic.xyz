@@ -11,7 +11,7 @@ defmodule SimponicxyzWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
-    plug NavigationHistory.Tracker, excluded_paths: ["/login", ~r(/admin.*)]
+    plug NavigationHistory.Tracker, excluded_paths: ["/users/log_in", ~r(/admin.*)]
   end
 
   pipeline :api do

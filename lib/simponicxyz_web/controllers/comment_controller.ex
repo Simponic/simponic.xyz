@@ -60,7 +60,7 @@ defmodule SimponicxyzWeb.CommentController do
         {:ok, comment} ->
           conn
           |> put_flash(:info, "Comment updated successfully.")
-          |> redirect(to: Routes.comment_path(conn, :show, comment))
+          |> redirect(to: NavigationHistory.last_path(conn))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "edit.html", comment: comment, changeset: changeset)

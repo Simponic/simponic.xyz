@@ -28,7 +28,7 @@ defmodule SimponicxyzWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post_w_comments = Blogs.get_post!(id) |> Simponicxyz.Repo.preload(:comments)
+    post_w_comments = Blogs.get_post!(id) |> Simponicxyz.Repo.preload([comments: [:user]])
     comment_changeset = if !is_nil(conn.assigns[:current_user]), do: Blogs.change_comment(%Comment{}, %{"post_id" => id, "user_id" => conn.assigns[:current_user].id}), else: nil 
     render(conn, "show.html", post: post_w_comments, comment_changeset: comment_changeset)
   end

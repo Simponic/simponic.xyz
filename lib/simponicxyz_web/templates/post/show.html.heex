@@ -1,8 +1,8 @@
 <div>
-<h1><%= @post.title %></h1>
-<h3 style="font-style: italic"><%= @post.subtitle %></h3>
-<p>Created: <%= Timex.from_now(@post.inserted_at) %>
-   | Updated: <%= Timex.from_now(@post.updated_at) %></p>
+  <h1><%= @post.title %></h1>
+  <h3 style="font-style: italic"><%= @post.subtitle %></h3>
+  <p>Created: <%= Timex.from_now(@post.inserted_at) %>
+    | Updated: <%= Timex.from_now(@post.updated_at) %></p>
 </div>
 
 <br>
@@ -14,19 +14,31 @@
 <br>
 <h2>Comments</h2>
 <%= for comment <- @post.comments do %>
-  <div class="comment">
-    <p><%= comment.body %></p>
+  <div class="comment" id={"comment-" <> Integer.to_string(comment.id)}>
+    <p>
+      <a href="javascript:void(0)" onclick={"selectComment(" <> Integer.to_string(comment.id) <> ")"}><%= comment.id %></a>
+      By user 
+        <%= 
+          user_role_or_nil = (if comment.user.role == "admin", do: "(admin)")
+          user_tag = "#{comment.user.id} #{user_role_or_nil}" 
+          ""%>
+        <%= if comment.user.role == "admin" do %>
+          <span class="rainbow_text_animated"><%= user_tag %></span>
+        <% else %>
+          <span style="color: grey"><%= user_tag %></span>
+        <% end %>
+    </p>
+    <pre class="comment-body"><%= comment.body %></pre>
 
-    <%=updated = Timex.from_now(comment.updated_at) 
-       inserted = Timex.from_now(comment.inserted_at)
-       "" %>
-    <p>Created: <%= inserted %>
-       <%= if (updated !== inserted), do: "| Updated: " <> Timex.from_now(comment.updated_at), else: "" %></p>
+    <p>
+     Created <%= Timex.from_now(comment.inserted_at) %> | Updated <%= Timex.from_now(comment.updated_at) %>
+     <br>
+    </p>
 
     <div>
       <%= if !is_nil(@current_user) && (comment.user_id == @current_user.id || @current_user.role == "admin") do %>
         <%= link "Edit",to: Routes.comment_path(@conn, :edit, comment) %>
-        | <%= link "Delete",to: Routes.comment_path(@conn, :delete, comment), method: :delete, data: [confirm: "Are you sure?"] %>
+      | <%= link "Delete",to: Routes.comment_path(@conn, :delete, comment), method: :delete, data: [confirm: "Are you sure?"] %>
       <% end %>
     </div>
   </div>
@@ -37,11 +49,64 @@
                                 conn: @conn, 
                                 action: Routes.comment_path(@conn, :create),
                                 changeset: @comment_changeset %>
+  <script>
+    const selectComment = (id) => {
+      $('html, body').animate({
+        scrollTop: $('#comment_body').offset().top
+      }, 500);
+      $('#comment_body').val(`${$('#comment_body').val()}\n>>${id}\n`);
+      $('#comment_body').focus();
+    }
+  </script>
 <% else %>
-  <div>
+  <div id="please-login">
     <p><%= link "Login", to: Routes.user_session_path(@conn, :new) %> to comment.</p>
   </div>
+
+  <script>
+    const selectComment = (id) => {
+      $('html, body').animate({
+        scrollTop: $('#please-login').offset().top
+      }, 500);
+      $("#please-login").addClass("blink");
+      setTimeout(() => {
+        $("#please-login").removeClass("blink");
+      }, 2000);
+    }
+  </script>
 <% end %>
+
+<script>
+  const commentDisplayed = (id) => $(`#comment-${id}`).length > 0;  
+
+  const focusComment = (id) => {
+    if (commentDisplayed(id)) {
+      $(`.comment`).each(function() {
+        $(this).removeClass("comment-referenced") 
+      });
+      $('html, body').animate({
+        scrollTop: $(`#comment-${id}`).offset().top
+      }, 500);
+      $(`#comment-${id}`).addClass("comment-referenced");
+    }
+  }
+
+  $(".comment-body").each(function() {
+    let text = $(this).text();
+    const regex = />>(\d+)/g
+    const matches = [...text.matchAll(regex)];
+    for (const match of matches) {
+      console.log(match)
+      const id = match[1];
+      let link = `<a href="javascript:void(0)" style="text-decoration: line-through;">>>${id}</a>`; 
+      if (commentDisplayed(id)) {
+        link = `<a href="javascript:void(0)" onclick="focusComment(${id})">>>${id}</a>`;
+      }
+      text = text.replace(match[0], link);
+    }
+    $(this).html(text);
+  });
+</script>
 
 <br>
 
