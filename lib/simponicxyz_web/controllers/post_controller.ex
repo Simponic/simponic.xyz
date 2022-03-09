@@ -1,9 +1,11 @@
 defmodule SimponicxyzWeb.PostController do
   use SimponicxyzWeb, :controller
+  import Ecto.Query
 
   alias Simponicxyz.Blogs
   alias Simponicxyz.Blogs.Comment
   alias Simponicxyz.Blogs.Post
+  alias Simponicxyz.Repo
 
   def index(conn, _params) do
     posts = Blogs.list_posts()
@@ -28,7 +30,7 @@ defmodule SimponicxyzWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post_w_comments = Blogs.get_post!(id) |> Simponicxyz.Repo.preload([comments: [:user]])
+    post_w_comments = Blogs.get_post!(id) |> Repo.preload([comments: {(from c in Comment, order_by: c.id), [:user]}])
     comment_changeset = if !is_nil(conn.assigns[:current_user]), do: Blogs.change_comment(%Comment{}, %{"post_id" => id, "user_id" => conn.assigns[:current_user].id}), else: nil 
     render(conn, "show.html", post: post_w_comments, comment_changeset: comment_changeset)
   end
