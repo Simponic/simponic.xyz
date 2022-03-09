@@ -40,7 +40,7 @@ window.updateTimes = submitTimes;
 import DOMPurify from "dompurify"
 window.DOMPurify = DOMPurify
 
-import hljs from "highlight.js"
+import hljs from 'highlight.js/lib/core';
 import "highlight.js/styles/dark.css"
 import javascript from 'highlight.js/lib/languages/javascript';
 import css from 'highlight.js/lib/languages/css';
