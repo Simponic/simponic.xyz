@@ -1,9 +1,5 @@
 import "../css/app.css"
 
-import $ from "jquery"
-import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
-import DOMPurify from "dompurify"
-
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
@@ -28,13 +24,19 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+import $ from "jquery"
 window.$ = $
 
+import flatpickr from "flatpickr"
+import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
 window.validDate = validDate;
 window.flatpickrOptions = flatpickrOptions;
+window.flatpickr = flatpickr;
 window.updateTimes = submitTimes;
 
-import flatpickr from "flatpickr"
-window.flatpickr = flatpickr
-
+import DOMPurify from "dompurify"
 window.DOMPurify = DOMPurify
+
+import hljs from "highlight.js"
+import "highlight.js/styles/dark.css"
+hljs.highlightAll();
