@@ -24,6 +24,9 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+
+
+
 import $ from "jquery"
 window.$ = $
 
@@ -39,4 +42,16 @@ window.DOMPurify = DOMPurify
 
 import hljs from "highlight.js"
 import "highlight.js/styles/dark.css"
+import javascript from 'highlight.js/lib/languages/javascript';
+import css from 'highlight.js/lib/languages/css';
+import nginx from 'highlight.js/lib/languages/nginx';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import bash from 'highlight.js/lib/languages/bash';
+import elixir from 'highlight.js/lib/languages/elixir';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('nginx', nginx);
+hljs.registerLanguage('dockerfile', dockerfile);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('elixir', elixir);
 hljs.highlightAll();

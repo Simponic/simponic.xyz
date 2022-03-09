@@ -57,7 +57,7 @@ defmodule SimponicxyzWeb.CommentController do
 
     if authorize(conn, comment_params) do
       case Blogs.update_comment(comment, comment_params) do
-        {:ok, comment} ->
+        {:ok, _comment} ->
           conn
           |> put_flash(:info, "Comment updated successfully.")
           |> redirect(to: NavigationHistory.last_path(conn))
