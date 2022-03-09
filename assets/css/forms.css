@@ -50,3 +50,12 @@
 .submit-button:hover {
   filter: brightness(85%);
 }
+
+textarea {
+  border-radius: 5px;
+  border: 0;
+  padding: 5px;
+  margin: 10px 0;
+  background-color: var(--secondary-text-color);
+  color: black;
+}
