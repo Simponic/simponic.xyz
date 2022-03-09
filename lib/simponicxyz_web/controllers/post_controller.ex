@@ -8,7 +8,7 @@ defmodule SimponicxyzWeb.PostController do
   alias Simponicxyz.Repo
 
   def index(conn, _params) do
-    posts = Blogs.list_posts()
+    posts = if !is_nil(conn.assigns[:current_user]) && conn.assigns[:current_user].role == "admin", do: Blogs.list_posts(), else: Repo.all(from p in Post, where: p.public == true)
     render(conn, "index.html", posts: posts)
   end
 
@@ -30,9 +30,20 @@ defmodule SimponicxyzWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post_w_comments = Blogs.get_post!(id) |> Repo.preload([comments: {(from c in Comment, order_by: c.id), [:user]}])
+    post = Blogs.get_post!(id)
+    post_w_comments = post |> Repo.preload([comments: {(from c in Comment, order_by: c.id), [:user]}])
     comment_changeset = if !is_nil(conn.assigns[:current_user]), do: Blogs.change_comment(%Comment{}, %{"post_id" => id, "user_id" => conn.assigns[:current_user].id}), else: nil 
-    render(conn, "show.html", post: post_w_comments, comment_changeset: comment_changeset)
+    if post.public do
+      render(conn, "show.html", post: post_w_comments, comment_changeset: comment_changeset)
+    else
+      if !is_nil(conn.assigns[:current_user]) && conn.assigns[:current_user].role == "admin" do
+        render(conn, "show.html", post: post_w_comments, comment_changeset: comment_changeset)
+      else
+        conn
+        |> put_flash(:error, "This post is private.")
+        |> redirect(to: Routes.post_path(conn, :index))
+      end
+    end
   end
 
   def edit(conn, %{"id" => id}) do

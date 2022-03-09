@@ -18,6 +18,12 @@
   </div>
 
   <div>
+    <%= label f, :public %>
+    <%= checkbox f, :public %>
+    <%= error_tag f, :public %>
+  </div>
+
+  <div>
     <%= label f, :content %>
     <br>
     <%= textarea f, :content, id: "post-body" %>

@@ -1,6 +1,9 @@
 <div>
   <h1><%= @post.title %></h1>
   <h3 style="font-style: italic"><%= @post.subtitle %></h3>
+  <%= if !is_nil(@current_user) && @current_user.role == "admin" do %>
+    <p>Public: <%= if @post.public, do: "yes", else: "no" %></p>
+  <% end %>
   <p>Created: <%= Timex.from_now(@post.inserted_at) %>
     | Updated: <%= Timex.from_now(@post.updated_at) %></p>
 </div>
@@ -17,11 +20,11 @@
   <div class="comment" id={"comment-" <> Integer.to_string(comment.id)}>
     <p>
       <a href="javascript:void(0)" onclick={"selectComment(" <> Integer.to_string(comment.id) <> ")"}><%= comment.id %></a>
+      <%= 
+        user_role_or_nil = (if comment.user.role == "admin", do: "(admin)")
+        user_tag = "#{comment.user.id} #{user_role_or_nil}" 
+        ""%>
       By user 
-        <%= 
-          user_role_or_nil = (if comment.user.role == "admin", do: "(admin)")
-          user_tag = "#{comment.user.id} #{user_role_or_nil}" 
-          ""%>
         <%= if comment.user.role == "admin" do %>
           <span class="rainbow_text_animated"><%= user_tag %></span>
         <% else %>
@@ -59,9 +62,7 @@
     }
   </script>
 <% else %>
-  <div id="please-login">
-    <p><%= link "Login", to: Routes.user_session_path(@conn, :new) %> to comment.</p>
-  </div>
+  <p id="please-login"><%= link "Login", to: Routes.user_session_path(@conn, :new) %> to comment.</p>
 
   <script>
     const selectComment = (id) => {

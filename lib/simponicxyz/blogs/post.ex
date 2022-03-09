@@ -6,6 +6,7 @@ defmodule Simponicxyz.Blogs.Post do
     field :content, :string
     field :subtitle, :string
     field :title, :string
+    field :public, :boolean
 
     has_many :comments, Simponicxyz.Blogs.Comment
 
@@ -15,7 +16,7 @@ defmodule Simponicxyz.Blogs.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :subtitle, :content])
-    |> validate_required([:title, :subtitle, :content])
+    |> cast(attrs, [:title, :subtitle, :content, :public])
+    |> validate_required([:title, :subtitle, :content, :public])
   end
 end

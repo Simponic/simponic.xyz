@@ -2,7 +2,7 @@
   <h1><%= link post.title, to: Routes.post_path(@conn, :show, post) %></h1>
   <h3><%= post.subtitle %></h3>
   Posted on <span style="font-style: italic"> 
-  <%= Calendar.strftime(post.inserted_at, "%m/%d/%Y") %>
+    <%= Calendar.strftime(post.inserted_at, "%m/%d/%Y") %>
   </span>
 
   <div>
