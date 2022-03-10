@@ -8,7 +8,7 @@ defmodule Simponicxyz.Blogs.Post do
     field :title, :string
     field :public, :boolean
 
-    has_many :comments, Simponicxyz.Blogs.Comment
+    has_many :comments, Simponicxyz.Blogs.Comment, on_delete: :delete_all
 
     timestamps()
   end
