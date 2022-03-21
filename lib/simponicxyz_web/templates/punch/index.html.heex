@@ -1,37 +1,40 @@
-<h1>Timecard Tracker</h1>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<div>
+  <h1>Timecard Tracker</h1>
+</div>
 
 <div style="margin-top: 12px; margin-bottom: 12px">
   <h3>Manage Current Punch:</h3>
-</div>
+  <%= if Enum.count(@currently_running) == 0 do %>
+    <label>Task Name</label>
 
+    <div class="selectize-container">
+      <select id="task-name" class="selectize">
+        <%= for task_name <- @task_names do %>
+          <option phx-value-ref={task_name} > <%= task_name %> </option>
+        <% end %>
+      </select>
+    </div>
+  <% end %>
 
 <div style="margin-bottom: 12px">
-  <a href="javascript:void(0)" class="my-button green" id="punch-in">Punch In</a>
-  <%= if Enum.count(@currently_running) == 1 do %>
-    <%= link "End Current Punch", to: Routes.punch_path(@conn, :end_timer, List.first(@currently_running)), class: "my-button red" %>
-  <% end %>
-</div>
-
-<div>
-  <label>Task Name</label>
-  <input type="text" id="task-name" placeholder="Task Name" class="input-text" value="My Task"/>
-
   <%= if Enum.count(@currently_running) == 0 do %>
-    <select id="punch-task" style="display: inline-block;">
-      <option value="" id="null-option"> - </option>
-      <%= for task_name <- @task_names do %>
-        <option phx-value-ref={task_name} > <%= task_name %> </option>
-      <% end %>
-    </select>
-    <p id="punch-error" style="color: red; display: none">Please enter task name</p>
+    <a href="javascript:void(0)" class="my-button green" id="punch-in">Punch In</a>
+  <% end %>
+  <%= if Enum.count(@currently_running) == 1 do %>
+    <p>Running <strong><%= List.first(@currently_running).task %></strong> for <strong><span id="current-task-time"></span></strong> </p>
+    <%= link "End Current Punch", to: Routes.punch_path(@conn, :end_timer, List.first(@currently_running)), class: "my-button red" %>
+    <script>
+      const current_task_start = moment("<%= List.first(@currently_running).start %>");
+      const updateElapsedTaskTime = () => {
+        $("#current-task-time").html((moment.utc(moment().diff(current_task_start)).format("HH:mm:ss")));
+      }
+      updateElapsedTaskTime();
+      setInterval(updateElapsedTaskTime, 1000)
+    </script>
   <% end %>
 </div>
+</div>
 
-  
 
 <div>
   <h3>Export Timecard:</h3>
@@ -48,8 +51,14 @@
     </div>
 
     <div style="display: inline-block">
-      <label for="task">Task</label>
-      <input type="text" id="t" name="task" class="input-text">
+      <div>
+        <label for="task">Task</label>
+      </div>
+      <select id="export-task-name" name="task">
+        <%= for task_name <- @task_names do %>
+          <option phx-value-ref={task_name} > <%= task_name %> </option>
+        <% end %>
+      </select>
     </div>
 
     <div>
@@ -92,6 +101,7 @@
 </div>
 
 <script>
+
 let flatpickrOptions = {
   altInput: true,
   altFormat: "F j, Y",
@@ -104,21 +114,7 @@ let flatpickrOptions = {
 
 $("#timezone").val(Intl.DateTimeFormat().resolvedOptions().timeZone);
 
-$("#punch-task").on("change", function() {
-  $("#task-name").val($(this).val());
-  $("#punch-error").hide();
-});
-
-$("#task-name").on("change", function() {
-  $("#null-option").val($(this).val());
-  $("#punch-error").hide();
-});
-
 $("#punch-in").on("click", function() {
-  if ($("#task-name").val() == "") {
-    $("#punch-error").show();
-    return;
-  }
   $.post("<%= Routes.punch_path(@conn, :start_new) %>", {
       _csrf_token: "<%= Phoenix.Controller.get_csrf_token() %>",
       task: $("#task-name").val(),

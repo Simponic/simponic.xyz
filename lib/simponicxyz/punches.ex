@@ -122,11 +122,4 @@ defmodule Simponicxyz.Punches do
         :end => (if punch.end > end_t, do: end_t, else: punch.end)
       })
   end
-
-  def get_task_names() do
-    Repo.all(from punch in Simponicxyz.Punches.Punch,
-                where: not is_nil(punch.task),
-                distinct: punch.task,
-                select: punch.task)
-  end
 end

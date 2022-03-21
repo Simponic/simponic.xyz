@@ -17,6 +17,11 @@
     <%= @punch.user_id %>
   </li>
 
+  <li>
+    <strong>Task:</strong>
+    <%= @punch.task %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.punch_path(@conn, :edit, @punch) %></span> |

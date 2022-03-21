@@ -31,6 +31,7 @@ import $ from "jquery"
 window.$ = $
 
 import flatpickr from "flatpickr"
+import "flatpickr/dist/themes/dark.css"
 import {validDate, flatpickrOptions, submitTimes} from "./date_picker_timezone_control"
 window.validDate = validDate;
 window.flatpickrOptions = flatpickrOptions;
@@ -57,3 +58,16 @@ hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('elixir', elixir);
 hljs.registerLanguage('pgsql', pgsql);
 hljs.highlightAll();
+
+import selectize from "selectize"
+import "selectize/dist/css/selectize.css"
+$(() => {
+  $(".selectize").selectize({
+    create: true,
+    sortField: "text",
+  });
+})
+
+import moment from "moment"
+window.moment = moment
+

@@ -10,8 +10,8 @@ defmodule SimponicxyzWeb.PunchController do
   def index(conn, _params) do
     punches = Punches.filter_punches_by_user_id(conn.assigns[:current_user].id)
     currently_running = Enum.filter(punches, fn x -> is_nil(x.end) end)
-    IO.puts(inspect(Punches.get_task_names()))
-    render(conn, "index.html", punches: punches, currently_running: currently_running, task_names: Punches.get_task_names())
+    task_names = punches |> Enum.map(fn x -> x.task end) |> Enum.filter(fn x -> x end) |> Enum.uniq
+    render(conn, "index.html", punches: punches, currently_running: currently_running, task_names: task_names)
   end
 
   def new(conn, _params) do
@@ -127,15 +127,16 @@ defmodule SimponicxyzWeb.PunchController do
       Map.merge(a, Enum.zip(intervals, x) |> Enum.into(%{}), fn _k,l,m -> l+m end)
     end)
 
-    total_time = Enum.reduce_while(intervals, 0, fn x,a -> if y=Map.get(total_time_per_interval, x), do: {:cont, a+y}, else: {:halt, a} end)
-    pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
+    total_time = Float.round(Enum.reduce_while(intervals, 0, fn x,a -> if y=Map.get(total_time_per_interval, x), do: {:cont, a+y}, else: {:halt, a} end), 2)
+    IO.puts(total_time)
+#    pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
-    send_download(
-      conn,
-      {:binary, pdf_html},
-      content_type: "application/pdf",
-      filename: Calendar.strftime(interval.start, "%m/%d/%Y") <> "-" <> Calendar.strftime(interval.end_t, "%m/%d/%Y") <> ".pdf"
-    )
-#    render(conn, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time)
+#    send_download(
+#      conn,
+#      {:binary, pdf_html},
+#      content_type: "application/pdf",
+#      filename: Calendar.strftime(interval.start, "%m/%d/%Y") <> "-" <> Calendar.strftime(interval.end_t, "%m/%d/%Y") <> ".pdf"
+#    )
+    render(conn, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time)
   end
 end
