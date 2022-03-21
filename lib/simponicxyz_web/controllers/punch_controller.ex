@@ -128,15 +128,14 @@ defmodule SimponicxyzWeb.PunchController do
     end)
 
     total_time = Float.round(Enum.reduce_while(intervals, 0, fn x,a -> if y=Map.get(total_time_per_interval, x), do: {:cont, a+y}, else: {:halt, a} end), 2)
-    IO.puts(total_time)
-#    pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
+    pdf_html = PdfGenerator.generate_binary!(Phoenix.View.render_to_string(SimponicxyzWeb.PunchView, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time))
 
-#    send_download(
-#      conn,
-#      {:binary, pdf_html},
-#      content_type: "application/pdf",
-#      filename: Calendar.strftime(interval.start, "%m/%d/%Y") <> "-" <> Calendar.strftime(interval.end_t, "%m/%d/%Y") <> ".pdf"
-#    )
-    render(conn, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time)
+    send_download(
+      conn,
+      {:binary, pdf_html},
+      content_type: "application/pdf",
+      filename: Calendar.strftime(interval.start, "%m/%d/%Y") <> "-" <> Calendar.strftime(interval.end_t, "%m/%d/%Y") <> ".pdf"
+    )
+#    render(conn, "pdf_export.html", total_time_per_interval: total_time_per_interval, intervals: intervals, timezone: timezone, total_time: total_time)
   end
 end
