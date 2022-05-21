@@ -19,8 +19,8 @@ defmodule SimponicxyzWeb.UserConfirmationController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system and it has not been confirmed yet, " <>
-        "you will receive an email with instructions shortly."
+      "An email with instructions to confirm your account may been sent. Though it is not"
+      <> " necessary to confirm, it is recommended."
     )
     |> redirect(to: "/")
   end
