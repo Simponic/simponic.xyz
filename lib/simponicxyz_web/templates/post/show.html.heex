@@ -6,6 +6,13 @@
   <% end %>
   <p>Created: <%= Timex.from_now(@post.inserted_at) %>
     | Updated: <%= Timex.from_now(@post.updated_at) %></p>
+
+  <div>
+    <%= if is_admin?(@current_user) do %>
+      <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
+      <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
+    <% end %>
+  </div>
 </div>
 
 <br>
@@ -19,19 +26,20 @@
 <%= for comment <- @post.comments do %>
   <div class="comment" id={"comment-" <> Integer.to_string(comment.id)}>
     <p>
-      <a href="javascript:void(0)" onclick={"selectComment(" <> Integer.to_string(comment.id) <> ")"}><%= comment.id %></a>
+      id: <a href="javascript:void(0)" onclick={"selectComment(" <> Integer.to_string(comment.id) <> ")"}><%= comment.id %></a>
       <%= 
         user_role_or_nil = (if comment.user.role == "admin", do: "(admin)")
         user_tag = "#{comment.user.id} #{user_role_or_nil}" 
         ""%>
-      By user 
+      <br>
+      User Id:
         <%= if comment.user.role == "admin" do %>
           <span class="rainbow_text_animated"><%= user_tag %></span>
         <% else %>
           <span style="color: grey"><%= user_tag %></span>
         <% end %>
     </p>
-    <pre class="comment-body"><%= comment.body %></pre>
+    <p class="comment-body"><%= comment.body %></p>
 
     <p>
      Created <%= Timex.from_now(comment.inserted_at) %> | Updated <%= Timex.from_now(comment.updated_at) %>
@@ -57,7 +65,7 @@
       $('html, body').animate({
         scrollTop: $('#comment_body').offset().top
       }, 500);
-      $('#comment_body').val(`${$('#comment_body').val()}\n>>${id}\n`);
+      $('#comment_body').val(`${$('#comment_body').val()}>>${id}\n`);
       $('#comment_body').focus();
     }
   </script>
@@ -108,12 +116,3 @@
     $(this).html(text);
   });
 </script>
-
-<br>
-
-<div>
-  <%= if is_admin?(@current_user) do %>
-    <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span> |
-    <span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
-  <% end %>
-</div>
