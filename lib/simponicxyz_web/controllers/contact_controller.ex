@@ -29,7 +29,7 @@ defmodule SimponicxyzWeb.ContactController do
   end
 
   def send(conn, params) do
-    if validate_captcha(params["h-captcha-response"]) do
+    if params["h-captcha-response"] && validate_captcha(params["h-captcha-response"]) do
       mail = new()
         |> from(System.get_env("CONTACT_EMAIL") || "sender@example.com")
         |> to(System.get_env("TO_EMAIL") || "receiver@example.com")
