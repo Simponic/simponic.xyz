@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-05-09 Tue 21:03 -->
+<!-- 2023-05-09 Tue 21:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>simponic</title>
@@ -202,26 +199,50 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org134e2f2">1. huh?</a>
+<li><a href="#orgffadaee">1. huh?</a>
 <ul>
-<li><a href="#orga0663ac">1.1. regulars be saddened, for we are now static</a></li>
+<li><a href="#org2a53e9c">1.1. regulars be saddened, for we are now (somewhat) static</a></li>
 </ul>
 </li>
-<li><a href="#org761ed83">2. links, contact</a></li>
-<li><a href="#orgacdbe36">3. salaries</a></li>
-<li><a href="#orga84a0b0">4. things i like&#x2026;</a></li>
-<li><a href="#orge99c880">5. things i'm not so much a fan of&#x2026;</a></li>
+<li><a href="#orgb00784d">2. links, contact</a></li>
+<li><a href="#org3f01357">3. salaries</a></li>
+<li><a href="#org67a8603">4. things i like&#x2026;</a></li>
+<li><a href="#orgd50e850">5. things i'm not so much a fan of&#x2026;</a></li>
 </ul>
 </div>
 </div>
 
-<div id="orgfead2c7" class="figure">
+<div id="org7605d03" class="figure">
 <p><img src="./img/logo.svg" alt="logo.svg" class="org-svg" />
 </p>
 </div>
 
-<div id="outline-container-org134e2f2" class="outline-2">
-<h2 id="org134e2f2"><span class="section-number-2">1.</span> huh?</h2>
+<?php
+  $motds = [
+     "hello, world!",
+     "emacs > vim",
+     "functional programming on top",
+     "\"a baller, a shot caller, an arch linux installer\"",
+     "one distro to rule them all, and in the darkness bind them",
+     "proprietary software leads to anger, anger leads to hate, hate leads to suffering",
+     "i'll tell you once, and i'll tell you again. there's always a prime between n and 2n.",
+     "1. e4 e5 2. ke2",
+     ">++++++[<+++++++++>-]<.+++.-----.--.--.",
+     "it's certainly the year of the linux desktop",
+     "dwm is a sweet window manager",
+     "e^(iπ)+1 is cool!",
+     "lambda calculus isn't calculus!",
+     "also try minecraft!",
+     "the days are just packed",
+     "when will we have no-instruction-set-computing?",
+     "i'm r u r' u' and i know it"
+  ];
+  echo "<h3 style='text-align:center'><em>" . $motds[array_rand($motds)] . "</em></h3>";
+?>
+
+
+<div id="outline-container-orgffadaee" class="outline-2">
+<h2 id="orgffadaee"><span class="section-number-2">1.</span> huh?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 yes, i stole <a href="http://bettermotherfuckingwebsite.com">that other guy's css</a>.
@@ -243,8 +264,8 @@ cool people know what it is, so keep it under wraps 🤫.
 </p>
 </div>
 
-<div id="outline-container-orga0663ac" class="outline-3">
-<h3 id="orga0663ac"><span class="section-number-3">1.1.</span> regulars be saddened, for we are now static</h3>
+<div id="outline-container-org2a53e9c" class="outline-3">
+<h3 id="org2a53e9c"><span class="section-number-3">1.1.</span> regulars be saddened, for we are now (somewhat) static</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 i used to have a kinda cool site i built a few years back, to explore <a href="https://www.phoenixframework.org/">phoenix</a>.
@@ -262,8 +283,8 @@ whether they're good or bad is up to you, dear reader.
 </div>
 </div>
 
-<div id="outline-container-org761ed83" class="outline-2">
-<h2 id="org761ed83"><span class="section-number-2">2.</span> links, contact</h2>
+<div id="outline-container-orgb00784d" class="outline-2">
+<h2 id="orgb00784d"><span class="section-number-2">2.</span> links, contact</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="https://github.com/Simponic">my github</a></li>
@@ -274,8 +295,8 @@ whether they're good or bad is up to you, dear reader.
 </div>
 </div>
 
-<div id="outline-container-orgacdbe36" class="outline-2">
-<h2 id="orgacdbe36"><span class="section-number-2">3.</span> salaries</h2>
+<div id="outline-container-org3f01357" class="outline-2">
+<h2 id="org3f01357"><span class="section-number-2">3.</span> salaries</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 i believe people would do good to openly share the money they make, to at
@@ -349,8 +370,8 @@ least "help" combat corporate greed.
 </div>
 </div>
 
-<div id="outline-container-orga84a0b0" class="outline-2">
-<h2 id="orga84a0b0"><span class="section-number-2">4.</span> things i like&#x2026;</h2>
+<div id="outline-container-org67a8603" class="outline-2">
+<h2 id="org67a8603"><span class="section-number-2">4.</span> things i like&#x2026;</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>elixir, lisp, c, (some aspects of) javascript. i don't really know how to feel about java, but i've used it the most out of anything.</li>
@@ -365,8 +386,8 @@ least "help" combat corporate greed.
 </div>
 </div>
 
-<div id="outline-container-orge99c880" class="outline-2">
-<h2 id="orge99c880"><span class="section-number-2">5.</span> things i'm not so much a fan of&#x2026;</h2>
+<div id="outline-container-orgd50e850" class="outline-2">
+<h2 id="orgd50e850"><span class="section-number-2">5.</span> things i'm not so much a fan of&#x2026;</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>c++ - when it's being cringe. which is unfortunately a lot of the fucking time.</li>
@@ -381,6 +402,10 @@ enough to find a good alternative in our fucked up world hehe.</li>
 </ul>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2023-05-09 Tue 21:48</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

@@ -3,10 +3,37 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/style.css" />
 #+HTML_HEAD_EXTRA: <meta name="viewport" content="width=device-width, initial-scale=1">
 
-#+OPTIONS: inlineimages
+#+OPTIONS: inlineimages toc:nil
 #+STARTUP: fold
 
+
 [[./img/logo.svg]]
+
+#+BEGIN_EXPORT html
+<?php
+  $motds = [
+     "hello, world!",
+     "emacs > vim",
+     "functional programming on top",
+     "\"a baller, a shot caller, an arch linux installer\"",
+     "one distro to rule them all, and in the darkness bind them",
+     "proprietary software leads to anger, anger leads to hate, hate leads to suffering",
+     "i'll tell you once, and i'll tell you again. there's always a prime between n and 2n.",
+     "1. e4 e5 2. ke2",
+     ">++++++[<+++++++++>-]<.+++.-----.--.--.",
+     "it's certainly the year of the linux desktop",
+     "dwm is a sweet window manager",
+     "e^(iπ)+1 is cool!",
+     "lambda calculus isn't calculus!",
+     "also try minecraft!",
+     "the days are just packed",
+     "when will we have no-instruction-set-computing?",
+     "i'm r u r' u' and i know it"
+  ];
+  echo "<h3 style='text-align:center'><em>" . $motds[array_rand($motds)] . "</em></h3>";
+?>
+#+END_EXPORT
+
 
 * huh?
 yes, i stole [[http://bettermotherfuckingwebsite.com][that other guy's css]].
@@ -20,7 +47,7 @@ sometimes, i make cool stuff that i'm proud of. like [[https://chessh.linux.usu.
 you didn't hear it here, but "swag" is one in active development. only
 cool people know what it is, so keep it under wraps 🤫.
 
-** regulars be saddened, for we are now static
+** regulars be saddened, for we are now (somewhat) static
 i used to have a kinda cool site i built a few years back, to explore [[https://www.phoenixframework.org/][phoenix]].
 but i never ended up using the features i spent so
 long making - a time card clock, contact form w/ captcha, dynamic blog
