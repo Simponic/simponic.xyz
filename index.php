@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-05-09 Tue 21:48 -->
+<!-- 2023-05-12 Fri 08:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>simponic</title>
@@ -199,20 +199,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgffadaee">1. huh?</a>
+<li><a href="#orgce40930">1. huh?</a>
 <ul>
-<li><a href="#org2a53e9c">1.1. regulars be saddened, for we are now (somewhat) static</a></li>
+<li><a href="#org4770eea">1.1. regulars be saddened, for we are no longer elixir</a></li>
 </ul>
 </li>
-<li><a href="#orgb00784d">2. links, contact</a></li>
-<li><a href="#org3f01357">3. salaries</a></li>
-<li><a href="#org67a8603">4. things i like&#x2026;</a></li>
-<li><a href="#orgd50e850">5. things i'm not so much a fan of&#x2026;</a></li>
+<li><a href="#org42326a8">2. links, contact</a></li>
+<li><a href="#org078259d">3. salaries</a></li>
+<li><a href="#orgb621d2c">4. things i like&#x2026;</a></li>
+<li><a href="#orgbc39d04">5. things i'm not so much a fan of&#x2026;</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org7605d03" class="figure">
+<div id="org0dc202b" class="figure">
 <p><img src="./img/logo.svg" alt="logo.svg" class="org-svg" />
 </p>
 </div>
@@ -237,12 +237,12 @@
      "when will we have no-instruction-set-computing?",
      "i'm r u r' u' and i know it"
   ];
-  echo "<h3 style='text-align:center'><em>" . $motds[array_rand($motds)] . "</em></h3>";
+  echo "<h3 style='text-align:center'>motd: <em>" . $motds[array_rand($motds)] . "</em></h3>";
 ?>
 
 
-<div id="outline-container-orgffadaee" class="outline-2">
-<h2 id="orgffadaee"><span class="section-number-2">1.</span> huh?</h2>
+<div id="outline-container-orgce40930" class="outline-2">
+<h2 id="orgce40930"><span class="section-number-2">1.</span> huh?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 yes, i stole <a href="http://bettermotherfuckingwebsite.com">that other guy's css</a>.
@@ -264,8 +264,8 @@ cool people know what it is, so keep it under wraps 🤫.
 </p>
 </div>
 
-<div id="outline-container-org2a53e9c" class="outline-3">
-<h3 id="org2a53e9c"><span class="section-number-3">1.1.</span> regulars be saddened, for we are now (somewhat) static</h3>
+<div id="outline-container-org4770eea" class="outline-3">
+<h3 id="org4770eea"><span class="section-number-3">1.1.</span> regulars be saddened, for we are no longer elixir</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 i used to have a kinda cool site i built a few years back, to explore <a href="https://www.phoenixframework.org/">phoenix</a>.
@@ -283,8 +283,8 @@ whether they're good or bad is up to you, dear reader.
 </div>
 </div>
 
-<div id="outline-container-orgb00784d" class="outline-2">
-<h2 id="orgb00784d"><span class="section-number-2">2.</span> links, contact</h2>
+<div id="outline-container-org42326a8" class="outline-2">
+<h2 id="org42326a8"><span class="section-number-2">2.</span> links, contact</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="https://github.com/Simponic">my github</a></li>
@@ -295,8 +295,8 @@ whether they're good or bad is up to you, dear reader.
 </div>
 </div>
 
-<div id="outline-container-org3f01357" class="outline-2">
-<h2 id="org3f01357"><span class="section-number-2">3.</span> salaries</h2>
+<div id="outline-container-org078259d" class="outline-2">
+<h2 id="org078259d"><span class="section-number-2">3.</span> salaries</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 i believe people would do good to openly share the money they make, to at
@@ -345,7 +345,7 @@ least "help" combat corporate greed.
 <td class="org-left">sep 2022</td>
 <td class="org-left">may 2023 (coming back after summer '23)</td>
 <td class="org-left">$18 / hour</td>
-<td class="org-left">yes. money is not great and i am underpaid, but the job is incredibly self motivating and chill. i work on cool stuff with cool people :)</td>
+<td class="org-left">yes. money is not great and i am underpaid. but the job is incredibly self motivated, and chill. i get to work on cool stuff with cool people :), and it's the pay cap for student jobs</td>
 </tr>
 
 <tr>
@@ -363,15 +363,15 @@ least "help" combat corporate greed.
 <td class="org-left">apr 2021</td>
 <td class="org-left">nov 2021</td>
 <td class="org-left">$13 / hour</td>
-<td class="org-left">eh, i was SEVERELY underpaid and thus bored, for the stuff i was doing in hindsight.</td>
+<td class="org-left">no, i was SEVERELY underpaid (and bored), for the stuff i was doing, in hindsight.</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-org67a8603" class="outline-2">
-<h2 id="org67a8603"><span class="section-number-2">4.</span> things i like&#x2026;</h2>
+<div id="outline-container-orgb621d2c" class="outline-2">
+<h2 id="orgb621d2c"><span class="section-number-2">4.</span> things i like&#x2026;</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>elixir, lisp, c, (some aspects of) javascript. i don't really know how to feel about java, but i've used it the most out of anything.</li>
@@ -381,30 +381,31 @@ least "help" combat corporate greed.
 <li>linux.</li>
 <li>chess.</li>
 <li>minecraft.</li>
-<li>democratic nations that practice social ideals to better the lives of its citizens rather than capital owners.</li>
+<li>democratic nations that practice social ideals to better the lives of their citizens rather than capital owners.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd50e850" class="outline-2">
-<h2 id="orgd50e850"><span class="section-number-2">5.</span> things i'm not so much a fan of&#x2026;</h2>
+<div id="outline-container-orgbc39d04" class="outline-2">
+<h2 id="orgbc39d04"><span class="section-number-2">5.</span> things i'm not so much a fan of&#x2026;</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>c++ - when it's being cringe. which is unfortunately a lot of the fucking time.</li>
 <li>"microshaft wangblows" - the phattest of sumos.</li>
 <li>over-abstracted oop.</li>
 <li>snap.</li>
-<li>religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or.
-religious people in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
+<li>religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or
+people practicing in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
 lds community.</li>
-<li>cryptocurrency. actually, money in general lmao. not the biggest fan of markets i must say. though, i'm not smart
-enough to find a good alternative in our fucked up world hehe.</li>
+<li>cryptocurrency. actually, just money in general lmao. not the biggest fan of markets i must say. though, i'm not smart
+enough to find a good alternative, don't know if there even is one. that's why i really want UBI to launch off the ground 
+ASAP.</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2023-05-09 Tue 21:48</p>
+<p class="date">Created: 2023-05-12 Fri 08:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

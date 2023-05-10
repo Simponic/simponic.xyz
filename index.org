@@ -30,7 +30,7 @@
      "when will we have no-instruction-set-computing?",
      "i'm r u r' u' and i know it"
   ];
-  echo "<h3 style='text-align:center'><em>" . $motds[array_rand($motds)] . "</em></h3>";
+  echo "<h3 style='text-align:center'>motd: <em>" . $motds[array_rand($motds)] . "</em></h3>";
 ?>
 #+END_EXPORT
 
@@ -47,7 +47,7 @@ sometimes, i make cool stuff that i'm proud of. like [[https://chessh.linux.usu.
 you didn't hear it here, but "swag" is one in active development. only
 cool people know what it is, so keep it under wraps 🤫.
 
-** regulars be saddened, for we are now (somewhat) static
+** regulars be saddened, for we are no longer elixir
 i used to have a kinda cool site i built a few years back, to explore [[https://www.phoenixframework.org/][phoenix]].
 but i never ended up using the features i spent so
 long making - a time card clock, contact form w/ captcha, dynamic blog
@@ -67,12 +67,12 @@ whether they're good or bad is up to you, dear reader.
 i believe people would do good to openly share the money they make, to at
 least "help" combat corporate greed.
 
-| age     | position                             | start    | end                                     | monies                                          | would work again?                                                                                                                         |
-|---------+--------------------------------------+----------+-----------------------------------------+-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------|
-| 19 - 19 | sde intern @ amazon pinpoint         | may 2023 | jul 2023                                | $9180/month + ~$7k housing stipend for 12 weeks | can't really say yet.                                                                                                                     |
-| 19 - 19 | student networking sde               | sep 2022 | may 2023 (coming back after summer '23) | $18 / hour                                      | yes. money is not great and i am underpaid, but the job is incredibly self motivating and chill. i work on cool stuff with cool people :) |
-| 18 - 18 | sde intern @ amazon pinpoint         | may 2022 | aug 2022                                | $9180/month + ~$6k housing stipend for 12 weeks | yes; i did                                                                                                                                |
-| 17 - 18 | contractor developer @ maiden voyage | apr 2021 | nov 2021                                | $13 / hour                                      | eh, i was SEVERELY underpaid and thus bored, for the stuff i was doing in hindsight.                                                      |
+| age     | position                             | start    | end                                     | monies                                          | would work again?                                                                                     |
+|---------+--------------------------------------+----------+-----------------------------------------+-------------------------------------------------+-------------------------------------------------------------------------------------------------------|
+| 19 - 19 | sde intern @ amazon pinpoint         | may 2023 | jul 2023                                | $9180/month + ~$7k housing stipend for 12 weeks | can't really say yet.                                                                                 |
+| 19 - 19 | student networking sde               | sep 2022 | may 2023 (coming back after summer '23) | $18 / hour                                      | yes. money is not great and i am underpaid. but the job is incredibly self motivated, and chill. i get to work on cool stuff with cool people :), and it's the pay cap for student jobs |
+| 18 - 18 | sde intern @ amazon pinpoint         | may 2022 | aug 2022                                | $9180/month + ~$6k housing stipend for 12 weeks | yes; i did                                                                                            |
+| 17 - 18 | contractor developer @ maiden voyage | apr 2021 | nov 2021                                | $13 / hour                                      | no, i was SEVERELY underpaid (and bored), for the stuff i was doing, in hindsight.                    |
 
 * things i like...
 + elixir, lisp, c, (some aspects of) javascript. i don't really know how to feel about java, but i've used it the most out of anything.
@@ -82,15 +82,16 @@ least "help" combat corporate greed.
 + linux.
 + chess.
 + minecraft.
-+ democratic nations that practice social ideals to better the lives of its citizens rather than capital owners.
++ democratic nations that practice social ideals to better the lives of their citizens rather than capital owners.
   
 * things i'm not so much a fan of...
 + c++ - when it's being cringe. which is unfortunately a lot of the fucking time.
 + "microshaft wangblows" - the phattest of sumos.
 + over-abstracted oop.
 + snap.
-+ religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or.
-  religious people in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
++ religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or
+  people practicing in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
   lds community.
-+ cryptocurrency. actually, money in general lmao. not the biggest fan of markets i must say. though, i'm not smart
-  enough to find a good alternative in our fucked up world hehe.
++ cryptocurrency. actually, just money in general lmao. not the biggest fan of markets i must say. though, i'm not smart
+  enough to find a good alternative, don't know if there even is one. that's why i really want UBI to launch off the ground 
+  ASAP.
