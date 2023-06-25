@@ -1,0 +1,42 @@
+#+TITLE: simponic
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/style.css" />
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="width=device-width, initial-scale=1">
+
+dear riley,
+
+below are a (hopefully ever-growing) collection of recipes. i hope you like them :)
+
+* sheperd's pie
+** ingredients
++ 2 and a half potatoes (if you liked the potatoes we did in Seattle, Golden Yukon. Otherwise, Russet potatoes are traditionally used here)
++ 1 lb of ground beef 
++ 2 peeled cloves of garlic 
++ 1/4 cup sour cream
++ 1/4 cup butter 
++ 1/4 cup milk  
+
+in terms of veggies you may mix and match with whatever you have around; peas, kidney beans, diced onions are pretty good too
+if you use onions, make sure to cook those in the pan for 6ish minutes before adding ground beef.
+
++ 1 can green beans 
++ 1 can yellow corn 
++ 1 can sliced carrots 
++ 3/4 cup tomato sauce 
++ 3 heaping tablespoons of flour
+
+** procedure
+1. fill a medium/large-sized pot full of water, bring to boil on the highest heat setting 
+2. cut potatoes into 1/2-inch-ish cubes, optionally skinning prior, if preferred 
+3. put potatoes into boiling (or near-boiling) water and bring the heat down to medium; keeping an eye on it to ensure nothing boils over. keep them boiling until 15 minutes have passed or until you can take a cube out of the water with a spoon and mash it with very little force.
+4. in a large pan begin browning ground beef; and separating with a spatula on medium-high heat, until thoroughly browned - about 8ish minutes. also, preheat oven to 375 degrees.
+5. dice 1 of the cloves garlic very finely. 
+6. turn off the heat on the pan, and move beef into a colander over a bowl to drain.
+7. return the beef to the pan, and reheat to medium-low. season thoroughly to taste with oregano, cumin, and the diced clove of garlic.
+8. drain each can of vegetables into the sink and add to pan, mixing them around and letting them get intimate with each other; season to taste with salt and pepper after a couple of minutes of heat. 
+9. add tomato sauce and flour (and a bit of sour cream if you’re adventurous) into the pan, mixing over medium heat until a slightly thicker sauce begins to form (like, 4ish minutes).
+10. turn pan's heat to low. att this point, the potatoes should be ready. turn off the pot’s heat and drain potatoes. return potatoes to pot along with sour cream, butter, milk, and the other minced garlic clove. begin to mash. 
+11. place the contents of the pan into a sizeable baking dish. begin scooping potatoes and spread evenly over the top with a spoon. 
+12. place in the oven and let bake for 25 minutes, letting rest after.
+13. turn the oven to its broil setting; when ready, place the dish back on the top rack and let sit for about 5 minutes to form a slightly crispy potatoey crust.
+14. profit

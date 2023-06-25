@@ -38,40 +38,37 @@
 * huh?
 yes, i stole [[http://bettermotherfuckingwebsite.com][that other guy's css]].
 
-my name is elizabeth, or lizzy / liz if you're cool. i'm 19, president
-of the [[https://linux.usu.edu][USU FSLC]], senior in computer science, blah blah blah...
+my name is elizabeth, or lizzy / liz. i'm 19, president
+of the [[https://linux.usu.edu][USU FSLC]], student in computer science, and intern at AWS...
 also a filthy liberal :)
 
-sometimes, i make cool stuff that i'm proud of. like [[https://chessh.linux.usu.edu][cheSSH]]!
-
-you didn't hear it here, but "swag" is one in active development. only
-cool people know what it is, so keep it under wraps 🤫.
+sometimes, i make (what i believe to be) cool stuff. like [[https://chessh.linux.usu.edu][cheSSH]]!
 
 ** regulars be saddened, for we are no longer elixir
 i used to have a kinda cool site i built a few years back, to explore [[https://www.phoenixframework.org/][phoenix]].
 but i never ended up using the features i spent so
-long making - a time card clock, contact form w/ captcha, dynamic blog
-system with comments and roles, etc. it was one of my first full-stack
-apps i did for fun, at the time; so pulling the plug was a little bittersweet.
+long making - a time card clock & exporter for contract use, contact form w/
+captcha, dynamic blog system with comments and roles, etc. it was my first
+full-stack app i made for fun, at the time; so pulling the plug was a little
+bittersweet.
 
 all you'll get here now, mostly, is black text and some of my takes.
 whether they're good or bad is up to you, dear reader.
 
 * links, contact
 + [[https://github.com/Simponic][my github]]
-+ [[https://github.com/usufslc][usufslc github]]
 + [[https://www.linkedin.com/in/elizabeth-hunt-031932229/][linkedin]]
 + [[mailto:elizabeth.hunt@simponic.xyz][elizabeth.hunt@simponic.xyz]]
-
-* salaries
-i believe people would do good to openly share the money they make, to at
-least "help" combat corporate greed.
++ [[https://github.com/usufslc][usufslc github]]
+* monies
+i believe salaries should be public & discussable information. to least "help"
+combat corporate greed (though, we should all be being paid the same... ideally)
 
 | age     | position                             | start    | end                                     | monies                                          | would work again?                                                                                     |
 |---------+--------------------------------------+----------+-----------------------------------------+-------------------------------------------------+-------------------------------------------------------------------------------------------------------|
-| 19 - 19 | sde intern @ amazon pinpoint         | may 2023 | jul 2023                                | $9180/month + ~$7k housing stipend for 12 weeks | can't really say yet.                                                                                 |
-| 19 - 19 | student networking sde               | sep 2022 | may 2023 (coming back after summer '23) | $18 / hour                                      | yes. money is not great and i am underpaid. but the job is incredibly self motivated, and chill. i get to work on cool stuff with cool people :), and it's the pay cap for student jobs |
-| 18 - 18 | sde intern @ amazon pinpoint         | may 2022 | aug 2022                                | $9180/month + ~$6k housing stipend for 12 weeks | yes; i did                                                                                            |
+| 19 - 19 | sde intern @ aws                     | may 2023 | jul 2023                                | $9180/month + ~$7k housing stipend for 12 weeks | can't really say yet.                                                                                 |
+| 19 - 19 | student networking sde               | sep 2022 | may 2023 (coming back after summer '23) | $18 / hour                                      | yes. money is not great and i am underpaid. but i get to work on cool stuff with cool people :), and it's the pay cap for student positions |
+| 18 - 18 | sde intern @ aws                     | may 2022 | aug 2022                                | $9180/month + ~$6k housing stipend for 12 weeks | yes; i did                                                                                            |
 | 17 - 18 | contractor developer @ maiden voyage | apr 2021 | nov 2021                                | $13 / hour                                      | no, i was SEVERELY underpaid (and bored), for the stuff i was doing, in hindsight.                    |
 
 * things i like...
@@ -83,7 +80,6 @@ least "help" combat corporate greed.
 + chess.
 + minecraft.
 + democratic nations that practice social ideals to better the lives of their citizens rather than capital owners.
-  
 * things i'm not so much a fan of...
 + c++ - when it's being cringe. which is unfortunately a lot of the fucking time.
 + "microshaft wangblows" - the phattest of sumos.
@@ -92,6 +88,5 @@ least "help" combat corporate greed.
 + religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or
   people practicing in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
   lds community.
-+ cryptocurrency. actually, just money in general lmao. not the biggest fan of markets i must say. though, i'm not smart
-  enough to find a good alternative, don't know if there even is one. that's why i really want UBI to launch off the ground 
-  ASAP.
++ just money in general lmao. not the biggest fan of markets i must say.
+  there might not be a good alternative currently, which is why UBI is a good compromise of both worlds.

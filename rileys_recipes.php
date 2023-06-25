@@ -200,201 +200,74 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8610fee">1. huh?</a>
+<li><a href="#org2398bcc">1. sheperd's pie</a>
 <ul>
-<li><a href="#org84be7ef">1.1. regulars be saddened, for we are no longer elixir</a></li>
+<li><a href="#org0a31359">1.1. ingredients</a></li>
+<li><a href="#org141d5bb">1.2. procedure</a></li>
 </ul>
 </li>
-<li><a href="#orgc1021fc">2. links, contact</a></li>
-<li><a href="#org52ed831">3. monies</a></li>
-<li><a href="#orgc149400">4. things i like&#x2026;</a></li>
-<li><a href="#org9a26a39">5. things i'm not so much a fan of&#x2026;</a></li>
 </ul>
 </div>
 </div>
-
-<div id="org49537ff" class="figure">
-<p><img src="./img/logo.svg" alt="logo.svg" class="org-svg" />
+<p>
+dear riley,
 </p>
-</div>
 
-<?php
-  $motds = [
-     "hello, world!",
-     "emacs > vim",
-     "functional programming on top",
-     "\"a baller, a shot caller, an arch linux installer\"",
-     "one distro to rule them all, and in the darkness bind them",
-     "proprietary software leads to anger, anger leads to hate, hate leads to suffering",
-     "i'll tell you once, and i'll tell you again. there's always a prime between n and 2n.",
-     "1. e4 e5 2. ke2",
-     ">++++++[<+++++++++>-]<.+++.-----.--.--.",
-     "it's certainly the year of the linux desktop",
-     "dwm is a sweet window manager",
-     "e^(iπ)+1 is cool!",
-     "lambda calculus isn't calculus!",
-     "also try minecraft!",
-     "the days are just packed",
-     "when will we have no-instruction-set-computing?",
-     "i'm r u r' u' and i know it"
-  ];
-  echo "<h3 style='text-align:center'>motd: <em>" . $motds[array_rand($motds)] . "</em></h3>";
-?>
+<p>
+below are a (hopefully ever-growing) collection of recipes. i hope you like them :)
+</p>
 
-
-<div id="outline-container-org8610fee" class="outline-2">
-<h2 id="org8610fee"><span class="section-number-2">1.</span> huh?</h2>
+<div id="outline-container-org2398bcc" class="outline-2">
+<h2 id="org2398bcc"><span class="section-number-2">1.</span> sheperd's pie</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-yes, i stole <a href="http://bettermotherfuckingwebsite.com">that other guy's css</a>.
-</p>
-
-<p>
-my name is elizabeth, or lizzy / liz. i'm 19, president
-of the <a href="https://linux.usu.edu">USU FSLC</a>, student in computer science, and intern at AWS&#x2026;
-also a filthy liberal :)
-</p>
-
-<p>
-sometimes, i make (what i believe to be) cool stuff. like <a href="https://chessh.linux.usu.edu">cheSSH</a>!
-</p>
 </div>
-
-<div id="outline-container-org84be7ef" class="outline-3">
-<h3 id="org84be7ef"><span class="section-number-3">1.1.</span> regulars be saddened, for we are no longer elixir</h3>
+<div id="outline-container-org0a31359" class="outline-3">
+<h3 id="org0a31359"><span class="section-number-3">1.1.</span> ingredients</h3>
 <div class="outline-text-3" id="text-1-1">
-<p>
-i used to have a kinda cool site i built a few years back, to explore <a href="https://www.phoenixframework.org/">phoenix</a>.
-but i never ended up using the features i spent so
-long making - a time card clock &amp; exporter for contract use, contact form w/
-captcha, dynamic blog system with comments and roles, etc. it was my first
-full-stack app i made for fun, at the time; so pulling the plug was a little
-bittersweet.
-</p>
-
-<p>
-all you'll get here now, mostly, is black text and some of my takes.
-whether they're good or bad is up to you, dear reader.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc1021fc" class="outline-2">
-<h2 id="orgc1021fc"><span class="section-number-2">2.</span> links, contact</h2>
-<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li><a href="https://github.com/Simponic">my github</a></li>
-<li><a href="https://www.linkedin.com/in/elizabeth-hunt-031932229/">linkedin</a></li>
-<li><a href="mailto:elizabeth.hunt@simponic.xyz">elizabeth.hunt@simponic.xyz</a></li>
-<li><a href="https://github.com/usufslc">usufslc github</a></li>
+<li>2 and a half potatoes (if you liked the potatoes we did in Seattle, Golden Yukon. Otherwise, Russet potatoes are traditionally used here)</li>
+<li>1 lb of ground beef </li>
+<li>2 peeled cloves of garlic </li>
+<li>1/4 cup sour cream</li>
+<li>1/4 cup butter </li>
+<li>1/4 cup milk  </li>
+</ul>
+
+<p>
+in terms of veggies you may mix and match with whatever you have around; peas, kidney beans, diced onions are pretty good too
+if you use onions, make sure to cook those in the pan for 6ish minutes before adding ground beef.
+</p>
+
+<ul class="org-ul">
+<li>1 can green beans</li>
+<li>1 can yellow corn </li>
+<li>1 can sliced carrots </li>
+<li>3/4 cup tomato sauce </li>
+<li>3 heaping tablespoons of flour</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org52ed831" class="outline-2">
-<h2 id="org52ed831"><span class="section-number-2">3.</span> monies</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-i believe salaries should be public &amp; discussable information. to least "help"
-combat corporate greed (though, we should all be being paid the same&#x2026; ideally)
-</p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">age</th>
-<th scope="col" class="org-left">position</th>
-<th scope="col" class="org-left">start</th>
-<th scope="col" class="org-left">end</th>
-<th scope="col" class="org-left">monies</th>
-<th scope="col" class="org-left">would work again?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">19 - 19</td>
-<td class="org-left">sde intern @ aws</td>
-<td class="org-left">may 2023</td>
-<td class="org-left">jul 2023</td>
-<td class="org-left">$9180/month + ~$7k housing stipend for 12 weeks</td>
-<td class="org-left">can't really say yet.</td>
-</tr>
-
-<tr>
-<td class="org-left">19 - 19</td>
-<td class="org-left">student networking sde</td>
-<td class="org-left">sep 2022</td>
-<td class="org-left">may 2023 (coming back after summer '23)</td>
-<td class="org-left">$18 / hour</td>
-<td class="org-left">yes. money is not great and i am underpaid. but i get to work on cool stuff with cool people :), and it's the pay cap for student positions</td>
-</tr>
-
-<tr>
-<td class="org-left">18 - 18</td>
-<td class="org-left">sde intern @ aws</td>
-<td class="org-left">may 2022</td>
-<td class="org-left">aug 2022</td>
-<td class="org-left">$9180/month + ~$6k housing stipend for 12 weeks</td>
-<td class="org-left">yes; i did</td>
-</tr>
-
-<tr>
-<td class="org-left">17 - 18</td>
-<td class="org-left">contractor developer @ maiden voyage</td>
-<td class="org-left">apr 2021</td>
-<td class="org-left">nov 2021</td>
-<td class="org-left">$13 / hour</td>
-<td class="org-left">no, i was SEVERELY underpaid (and bored), for the stuff i was doing, in hindsight.</td>
-</tr>
-</tbody>
-</table>
+<div id="outline-container-org141d5bb" class="outline-3">
+<h3 id="org141d5bb"><span class="section-number-3">1.2.</span> procedure</h3>
+<div class="outline-text-3" id="text-1-2">
+<ol class="org-ol">
+<li>fill a medium/large-sized pot full of water, bring to boil on the highest heat setting </li>
+<li>cut potatoes into 1/2-inch-ish cubes, optionally skinning prior, if preferred </li>
+<li>put potatoes into boiling (or near-boiling) water and bring the heat down to medium; keeping an eye on it to ensure nothing boils over. keep them boiling until 15 minutes have passed or until you can take a cube out of the water with a spoon and mash it with very little force.</li>
+<li>in a large pan begin browning ground beef; and separating with a spatula on medium-high heat, until thoroughly browned - about 8ish minutes. also, preheat oven to 375 degrees.</li>
+<li>dice 1 of the cloves garlic very finely. </li>
+<li>turn off the heat on the pan, and move beef into a colander over a bowl to drain.</li>
+<li>return the beef to the pan, and reheat to medium-low. season thoroughly to taste with oregano, cumin, and the diced clove of garlic.</li>
+<li>drain each can of vegetables into the sink and add to pan, mixing them around and letting them get intimate with each other; season to taste with salt and pepper after a couple of minutes of heat. </li>
+<li>add tomato sauce and flour (and a bit of sour cream if you’re adventurous) into the pan, mixing over medium heat until a slightly thicker sauce begins to form (like, 4ish minutes).</li>
+<li>turn pan's heat to low. att this point, the potatoes should be ready. turn off the pot’s heat and drain potatoes. return potatoes to pot along with sour cream, butter, milk, and the other minced garlic clove. begin to mash. </li>
+<li>place the contents of the pan into a sizeable baking dish. begin scooping potatoes and spread evenly over the top with a spoon. </li>
+<li>place in the oven and let bake for 25 minutes, letting rest after.</li>
+<li>turn the oven to its broil setting; when ready, place the dish back on the top rack and let sit for about 5 minutes to form a slightly crispy potatoey crust.</li>
+<li>profit</li>
+</ol>
 </div>
-</div>
-
-<div id="outline-container-orgc149400" class="outline-2">
-<h2 id="orgc149400"><span class="section-number-2">4.</span> things i like&#x2026;</h2>
-<div class="outline-text-2" id="text-4">
-<ul class="org-ul">
-<li>elixir, lisp, c, (some aspects of) javascript. i don't really know how to feel about java, but i've used it the most out of anything.</li>
-<li>math - algebra of abstract or linear variety, number theory, analysis, discrete. you name it. shove it in my brain already.</li>
-<li>functional paradigms.</li>
-<li>emacs.</li>
-<li>linux.</li>
-<li>chess.</li>
-<li>minecraft.</li>
-<li>democratic nations that practice social ideals to better the lives of their citizens rather than capital owners.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org9a26a39" class="outline-2">
-<h2 id="org9a26a39"><span class="section-number-2">5.</span> things i'm not so much a fan of&#x2026;</h2>
-<div class="outline-text-2" id="text-5">
-<ul class="org-ul">
-<li>c++ - when it's being cringe. which is unfortunately a lot of the fucking time.</li>
-<li>"microshaft wangblows" - the phattest of sumos.</li>
-<li>over-abstracted oop.</li>
-<li>snap.</li>
-<li>religion. but, like, only if it's mixed in with nationalism/conservatism. i have no qualms with religion or
-people practicing in general, i just have some beef with mormons; mainly due to growing up very lds, in a small,
-lds community.</li>
-<li>just money in general lmao. not the biggest fan of markets i must say.
-there might not be a good alternative currently, which is why UBI is a good compromise of both worlds.</li>
-</ul>
 </div>
 </div>
 </div>
