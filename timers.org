@@ -1,0 +1,39 @@
+#+TITLE: simponic's timers
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/style.css" />
+#+HTML_HEAD_EXTRA: <meta name="viewport" content="width=device-width, initial-scale=1">
+
+#+OPTIONS: inlineimages toc:nil
+#+STARTUP: fold
+
+#+BEGIN_EXPORT html
+<script>
+
+const timers = [
+['see riley :3', '2023-08-01'],
+['20th birthday', '2023-08-18'],
+['graduation', '2023-12-15'],
+];
+
+timers.map(
+([title, date]) => ([title, new Date(
+date.toLocaleString('en-US', { timeZone: 'America/Boise' })
+)])
+).forEach(([title, date]) => {
+
+const titleId = `${title}-title`;
+const timerId = `${title}-timer`;
+
+const template = `<div><h1 id='${titleId}'>${title}</h1><p>in: <span id='${timerId}'></span> ms</p></div>`;
+document.getElementById("content").innerHTML += template;
+
+setInterval(() => {
+const msTill = date.getTime() - new Date().getTime();
+document.getElementById(timerId).innerHTML = msTill;
+
+}, 60 / 1000);
+}
+);
+
+</script>
+#+END_EXPORT

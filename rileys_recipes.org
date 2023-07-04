@@ -14,7 +14,7 @@ below are a (hopefully ever-growing) collection of recipes. i hope you like them
 + 2 peeled cloves of garlic 
 + 1/4 cup sour cream
 + 1/4 cup butter 
-+ 1/4 cup milk  
++ 1/4 cup milk
 
 in terms of veggies you may mix and match with whatever you have around; peas, kidney beans, diced onions are pretty good too
 if you use onions, make sure to cook those in the pan for 6ish minutes before adding ground beef.
@@ -40,3 +40,21 @@ if you use onions, make sure to cook those in the pan for 6ish minutes before ad
 12. place in the oven and let bake for 25 minutes, letting rest after.
 13. turn the oven to its broil setting; when ready, place the dish back on the top rack and let sit for about 5 minutes to form a slightly crispy potatoey crust.
 14. profit
+
+* cream of mushroom chicken rice / pasta
+this was initially developed for cooking with rice, but i recently discovered it's actually
+really good with pasta too!
+** ingredients
++ 1 can of cream of mushroom soup
++ 1 lb of chicken breast
++ 1 cup of rice
++ a good chunk of pasta spaghetti noodles to cover the bottom
++ oregano, italian seasoning
+** procedure
+1. preheat oven to 350 degrees.
+2. in a baking pan place rice, soup, and 1.5 cups of water (2 if using pasta), also any veggies you may like (broccoli is good) into dish and stir until creamy.
+3. cut chicken into even strips (or just use tenderloin) and place chicken atop. season to taste.
+4. let cook in oven for about 25 minutes, or until the chicken is fully cooked.
+5. if using pasta, drain some of the soup mixture from the dish and discard, as preferred.
+6. dress with paremesean, cheddar, whatever.
+7. profit.
